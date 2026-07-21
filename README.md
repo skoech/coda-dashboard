@@ -1,3 +1,3 @@
 # CODA dashboard
 
-This is a dashboard for tracking Canonical's Open Documentation Academy (CODA) issues.
+This is the dashboard for tracking Canonical's Open Documentation Academy (CODA) issues.
