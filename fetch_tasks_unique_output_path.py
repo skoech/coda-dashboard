@@ -80,14 +80,8 @@ def main():
         print(f"Fetching issues from {owner}/{repo}") # Print a  message saying which repository is being processed
         issues = fetch_issues(owner, repo) # Call the function to fetch issues from the GitHub API; save the returned list of issues in the variable 'issues'
         # Create a unique output path for each repository to avoid overwriting files when fetching issues from multiple repositories
-        output_path = 'issues.json' # Define the output path for the JSON file where the issues will be saved
-    save_to_json(issues, output_path) # Call the function to save the fetched issues to the JSON file created in the previous step
+        output_path = f"{repo}_issues.json"
+        save_to_json(issues, output_path) # Call the function to save the fetched issues to the JSON file created in the previous step
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
