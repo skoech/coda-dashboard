@@ -1,0 +1,22 @@
+# Configuration for the CODA dashboard
+# This file defines the repositories to fetch issues from
+
+repositories:
+  - owner: canonical
+    repo: ulwazi
+    labels:
+      - documentation
+      - bug
+    maintainer(s):
+      name: Vladimir Izmalkov
+      github: izmalk
+    contributor guide: https://documentation.ubuntu.com/ulwazi/content/contribute/
+
+  - owner: canonical
+    repo: microceph
+    labels:
+      - coda
+    maintainer(s):
+      name: Sharon Koech
+      github: skoech
+    contributor guide: https://documentation.ubuntu.com/microceph/stable/contributing/
