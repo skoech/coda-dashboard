@@ -92,5 +92,5 @@ def main():
     save_to_json(all_issues, output_path) # Call the function to save the fetched issues to the JSON file created in the previous step
     print(f"\nSaved {len(all_issues)} total to {output_path}") # Print a confirmation message that the total number of issues after all looping through all repositories have been saved to the JSON file
 
-if __name__ == "__main__":
+if __name__ == "__main__": # If the script is run directly (not imported as a module), call the main() function to execute the script
     main()

@@ -14,3 +14,6 @@ __pycache__/ # Bytecode folder for modern Python versions (3.2+)
 
 # Secrets
 .env # Environment variable file for storing sensitive information like API keys
+
+# Generated files
+index.html # Generated HTML file for the dashboard

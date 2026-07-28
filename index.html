@@ -1,0 +1,2836 @@
+<!--Jinja2 template for the CODA dashboard.-->
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CODA dashboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+        <body>
+            <header>
+                <h1>CODA dashboard</h1>    <!--Replace title with a Jinja variable/expression (prints a value)-->
+                <p>Total open issues: 60</p> <!--Jinja expression to show number of issues passed from the build script-->
+                <!--Add conditionals.-->
+                
+            </header>
+
+            <main>
+            <!--Loop through every issue and print the number, title, description and meta info, e.g. assignee and date created.-->
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/133">#133 test: support Playwright on Ubuntu 26.04</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+- require Playwright 1.61 for Ulwazi's development tests
+- refresh the uv lockfile from Playwright 1.60.0 to 1.61.0
+
+## Why
+
+Playwright 1.60 cannot install Chromium on Ubuntu 26.04. Native Ubuntu 26.04 support landed in Playwright 1.61, so upgrading the development dependency removes the failure without documenting a temporary host-platform override.
+
+## Validation
+
+- Sphinx dirhtml build: 17 pages, no warnings
+- `test_scss_propagation.py` and `test_site_validation.py`: 3 passed
+- Chromium installed and launched through Playwright 1.61
+
+Closes #126.
+</p>
+                ## Summary
+
+- require Playwright 1.61 for Ulwazi's development tests
+- refresh the uv lockfile from Playwright 1.60.0 to 1.61.0
+
+## Why
+
+Playwright 1.60 cannot install Chromium on Ubuntu 26.04. Native ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/132">#132 fix: preserve spacing before admonitions</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+- add the standard 1.5rem vertical gap when a Sphinx code block is immediately followed by an Ulwazi notification
+- add a representative MyST fixture
+- regenerate the compiled theme CSS and source map
+
+## Root cause
+
+Sphinx highlight wrappers have no bottom margin, while Vanilla notifications only define a bottom margin. Adjacent blocks therefore touched with no vertical separation.
+
+## Validation
+
+- Sphinx dirhtml build: 17 pages, no warnings
+- fast pytest suite: 2 passed
+- Playwright computed style: one matching adjacency, `margin-top: 24px`
+
+Closes #110.
+</p>
+                ## Summary
+
+- add the standard 1.5rem vertical gap when a Sphinx code block is immediately followed by an Ulwazi notification
+- add a representative MyST fixture
+- regenerate the compiled theme CSS an ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/131">#131 fix: number size in ol</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Fixes https://github.com/canonical/ulwazi/issues/81 and adds test for checking size of number marker in ordered lists.
+
+| Before| After|
+|--------|--------|
+| <img width="497" height="242" alt="Screenshot 2026-07-23 082103" src="https://github.com/user-attachments/assets/30e7fe59-af4d-48ee-979c-e56070344c93" />| <img width="543" height="240" alt="Screenshot 2026-07-23 082041" src="https://github.com/user-attachments/assets/3bc7dc3a-8119-47ff-872a-c334862e6520" />|
+
+DOCPR-3154</p>
+                Fixes https://github.com/canonical/ulwazi/issues/81 and adds test for checking size of number marker in ordered lists.
+
+| Before| After|
+|--------|--------|
+| <img width="497" height="242" alt="Sc ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/130">#130 fix: remove apt-get upgrade from pdf-prep-force to fix CI snap failure</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+Fixes the CI failure on the **Install PDF dependencies** step ([run #29955798613](https://github.com/canonical/ulwazi/actions/runs/29955798613/job/89046899743)).
+
+The `sudo apt-get upgrade -y` line in the `pdf-prep-force` target has been removed. It was causing CI to fail because `apt-get upgrade` upgrades **all** system packages, including the `firefox` snap on Ubuntu 24.04 runners, which cannot be installed in the containerized CI environment.
+
+## Root cause
+
+The `pdf-prep-force` target in `docs/Makefile` contained:
+
+```makefile
+pdf-prep-force:
+	sudo apt-get update
+	sudo apt-get upgrade -y          # ← THIS line caused the failure
+	sudo apt-get install --no-install-recommends -y $(DOCS_PDFPACKAGES) \
+```
+
+`apt-get upgrade -y` upgrades **all** system packages, not just PDF-related ones. On the GitHub Actions `ubuntu-latest` runner, this pulls in a new version of the `firefox` package. In Ubuntu 24.04, `firefox` is a transitional package that depends on the **firefox snap**, and snapd doesn't work properly in the containerized CI environment — hence:
+
+```
+Errors were encountered while processing:
+ /tmp/apt-dpkg-install-Z28U0P/02-firefox_1%3a1snap1-0ubuntu5_amd64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+make[1]: *** [Makefile:150: pdf-prep-force] Error 100
+make: *** [common.mk:271: docs-pdf-prep-force] Error 2
+```
+
+This is an environmental failure: a new firefox snap version was published in the Ubuntu archive, and `apt-get upgrade` is now trying (and failing) to install it.
+
+## The fix
+
+The `apt-get upgrade -y` line is unnecessary for PDF generation — you only need to *install* the PDF packages, not upgrade the entire system. Removing it makes CI deterministic and avoids snap-related failures.
+
+```diff
+ pdf-prep-force:
+ 	sudo apt-get update
+-	sudo apt-get upgrade -y
+ 	sudo apt-get install --no-install-recommends -y $(DOCS_PDFPACKAGES) \
+```
+
+> **Note:** The upstream [sphinx-stack](https://github.com/canonical/sphinx-stack) `docs/Makefile` has the same line, so this is an upstream bug too. A fix should be contributed upstream as well.
+
+## Testing
+
+- [ ] CI `Install PDF dependencies` step should now pass
+- [ ] PDF packages are still installed correctly via `apt-get install`
+</p>
+                ## Summary
+
+Fixes the CI failure on the **Install PDF dependencies** step ([run #29955798613](https://github.com/canonical/ulwazi/actions/runs/29955798613/job/89046899743)).
+
+The `sudo apt-get upg ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">izmalk </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-07-22</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/126">#126 Playwright errors on Ubuntu 26.04</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Description
+
+When testing on Ubuntu 26.04 (in WSL), the tests requiring Playwright errored:
+
+```
+Failed to install browsers
+Error: ERROR: Playwright does not support chromium on ubuntu26.04-x64
+```
+
+The tests that would use a headless browser were also shown as failed:
+
+When the following var is set, Playwright falls back to its build for Ubuntu 24.04 when the same tests are run, and the same tests pass:
+
+`export PLAYWRIGHT_HOST_PLATFORM_OVERRIDE=ubuntu24.04-x64`
+
+I don't believe Playwright is available for 26.04 yet, but it is the current LTS for Ubuntu, so perhaps this should be mentioned in the testing guidance somewhere for contributors.
+
+## Example outputs
+
+### Without setting var
+
+```
+==================================================================== test session starts ====================================================================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0 -- /home/shane/dev/gh-work/ulwazi/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/shane/dev/gh-work/ulwazi
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.13.0
+collected 5 items / 2 deselected / 3 selected
+
+tests/test_pdf_generation.py::test_pdf_exists PASSED                                                                                                  [ 33%]
+tests/test_scss_propagation.py::test_rendered_color FAILED                                                                                            [ 66%]
+tests/test_scss_propagation.py::test_ordered_list_marker_matches_text_size FAILED                                                                     [100%]
+
+========================================================================= FAILURES ==========================================================================
+____________________________________________________________________ test_rendered_color ____________________________________________________________________
+tests/test_scss_propagation.py:32: in test_rendered_color
+    subprocess.run(
+/usr/lib/python3.14/subprocess.py:578: in run
+    raise CalledProcessError(retcode, process.args,
+E   subprocess.CalledProcessError: Command '['/home/shane/dev/gh-work/ulwazi/.venv/bin/python3', '-m', 'playwright', 'install', 'chromium']' returned non-zero exit status 1.
+------------------------------------------------------------------- Captured stdout call --------------------------------------------------------------------
+Failed to install browsers
+Error: ERROR: Playwright does not support chromium on ubuntu26.04-x64
+________________________________________________________ test_ordered_list_marker_matches_text_size _________________________________________________________
+tests/test_scss_propagation.py:67: in test_ordered_list_marker_matches_text_size
+    subprocess.run(
+/usr/lib/python3.14/subprocess.py:578: in run
+    raise CalledProcessError(retcode, process.args,
+E   subprocess.CalledProcessError: Command '['/home/shane/dev/gh-work/ulwazi/.venv/bin/python3', '-m', 'playwright', 'install', 'chromium']' returned non-zero exit status 1.
+------------------------------------------------------------------- Captured stdout call --------------------------------------------------------------------
+Failed to install browsers
+Error: ERROR: Playwright does not support chromium on ubuntu26.04-x64
+========================================================================== PASSES ===========================================================================
+================================================================== short test summary info ==================================================================
+PASSED tests/test_pdf_generation.py::test_pdf_exists
+FAILED tests/test_scss_propagation.py::test_rendered_color - subprocess.CalledProcessError: Command '['/home/shane/dev/gh-work/ulwazi/.venv/bin/python3', '-m', 'playwright', 'install', 'chromium']' returned non-ze...
+FAILED tests/test_scss_propagation.py::test_ordered_list_marker_matches_text_size - subprocess.CalledProcessError: Command '['/home/shane/dev/gh-work/ulwazi/.venv/bin/python3', '-m', 'playwright', 'install', 'chromium']' returned non-ze...
+========================================================= 2 failed, 1 passed, 2 deselected in 1.41s =========================================================
+make: *** [Makefile:78: test-slow] Error 1
+```
+
+### After setting var:
+
+```
+==================================================================== test session starts ====================================================================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0 -- /home/shane/dev/gh-work/ulwazi/.venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/shane/dev/gh-work/ulwazi
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.13.0
+collected 5 items / 2 deselected / 3 selected
+
+tests/test_pdf_generation.py::test_pdf_exists PASSED                                                                                                  [ 33%]
+tests/test_scss_propagation.py::test_rendered_color PASSED                                                                                            [ 66%]
+tests/test_scss_propagation.py::test_ordered_list_marker_matches_text_size PASSED                                                                     [100%]
+
+========================================================================== PASSES ===========================================================================
+____________________________________________________________________ test_rendered_color ____________________________________________________________________
+------------------------------------------------------------------- Captured stdout call --------------------------------------------------------------------
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+[DEBUG] Computed color: rgb(128, 0, 128)
+________________________________________________________ test_ordered_list_marker_matches_text_size _________________________________________________________
+------------------------------------------------------------------- Captured stdout call --------------------------------------------------------------------
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+BEWARE: your OS is not officially supported by Playwright; downloading fallback build for ubuntu24.04-x64.
+================================================================== short test summary info ==================================================================
+PASSED tests/test_pdf_generation.py::test_pdf_exists
+PASSED tests/test_scss_propagation.py::test_rendered_color
+PASSED tests/test_scss_propagation.py::test_ordered_list_marker_matches_text_size
+============================================================== 3 passed, 2 deselected in 3.30s ==============================================================
+```</p>
+                ## Description
+
+When testing on Ubuntu 26.04 (in WSL), the tests requiring Playwright errored:
+
+```
+Failed to install browsers
+Error: ERROR: Playwright does not support chromium on ubuntu26.04-x64
+``` ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-15</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/125">#125 refactor: remove sphinx-tabs support</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>This PR removes support for sphinx-tabs extension completely in line with the sphinx-stack directive under https://documentation.ubuntu.com/sphinx-stack/latest/reference/myst-syntax/#tabs. This maintains the sphinx-design tabs as the default and supported tabs.
+
+I have also decided not to partially support the sphinx-tabs extension due do future maintenance overheads.
+
+## Changes
+- Updated the `tabs.py` file to remove the sphinx-tabs logic 
+- Updated `conf.py` and python dependancies to remove sphinx-tabs and related settings.
+- Committed uv.lock to track the removal
+- Updated docs (cheatsheet) to reflect the changes and removed the older guides
+- The tabs syntax links now point at the sphinx-stack docs rather than
+`sphinx-design.readthedocs.io`, matching the direction of #118:
+
+
+## Acceptance criteria (as per JIRA ticket)
+
+- [x] sphinx-design is the only recommended and documented tabs option.-
+- [x] [x] sphinx-tabs not mentioned in the syntax guides — only the removal notice.
+- [x] sphinx-tabs not required, not installed, not built. No workflow referenced
+      it directly; dropping the dependency and the test pages takes it out of CI.
+- [ ] "sphinx-tabs still working if added back" — deliberately not met. This was
+      the optional criterion and it is the one that conflicts with the decision
+      above. Re-adding `sphinx-tabs` to `extensions` will render its tabs with
+      stock styling, unthemed by Vanilla.</p>
+                This PR removes support for sphinx-tabs extension completely in line with the sphinx-stack directive under https://documentation.ubuntu.com/sphinx-stack/latest/reference/myst-syntax/#tabs. This mainta ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">geoffreynyaga </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-07-14</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/124">#124 docs: Add testing strategy</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>We are adding a document describing our strategy for testing Ulwazi.
+Plus other minor fixes in docs.</p>
+                We are adding a document describing our strategy for testing Ulwazi.
+Plus other minor fixes in docs.   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">izmalk </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-07-13</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/123">#123 Version selector is too small and hard to notice</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Rob Gibbon provided feedback that the version selector on RTD (the default one at the bottom right corner) is very small and too hard to notice.
+
+<img width="159" height="99" alt="Image" src="https://github.com/user-attachments/assets/5c800f0c-8ffd-4d52-b27d-f7490f1c6502" /></p>
+                Rob Gibbon provided feedback that the version selector on RTD (the default one at the bottom right corner) is very small and too hard to notice.
+
+<img width="159" height="99" alt="Image" src="https:// ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-08</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/122">#122 Horizontal menu prototype</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Experimenting with search field being in the horizontal menu.
+Also removed product menu.
+Additionally, removed optional butons from the horizontal menu to make it more minimalistic.</p>
+                Experimenting with search field being in the horizontal menu.
+Also removed product menu.
+Additionally, removed optional butons from the horizontal menu to make it more minimalistic.   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">izmalk </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-06-18</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/121">#121 Fix spellexception errors after Ulwazi migration</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>When we apply Ulwazi theme to Charmed Apache Kafka docs set we have these errors about the `spellexception` role.
+
+```text
+/home/vladimir.izmalkov@canonical.com/Documents/GitHub/kafka-operator/docs/how-to/client-connections.md.rst:10: WARNING: Unknown interpreted text role "spellexception".
+/home/vladimir.izmalkov@canonical.com/Documents/GitHub/kafka-operator/docs/how-to/deploy/deploy-aws.md.rst:10: WARNING: Unknown interpreted text role "spellexception".
+```
+
+This seems to be because the spellexception role is no longer supported by Sphinx Stack after changing the spell checker solution.</p>
+                When we apply Ulwazi theme to Charmed Apache Kafka docs set we have these errors about the `spellexception` role.
+
+```text
+/home/vladimir.izmalkov@canonical.com/Documents/GitHub/kafka-operator/docs/ho ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">izmalk </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-06-17</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/120">#120 Page duplication in NavMenu</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>When we open the page https://documentation.ubuntu.com/ulwazi/content/test2/ the NavMenu shows the menu item for this page duplicated:
+
+<img width="328" height="496" alt="Image" src="https://github.com/user-attachments/assets/9f428c0a-614d-4348-9aac-16042cc93d37" />
+
+This is most likely caused by re-using the same pages twice in TOC. The second time is here - https://github.com/canonical/ulwazi/blob/main/docs/content/test-on-page-toc.rst?plain=1#L14
+If it's true, then it's not the theme's bug, but just sample content msitake.
+
+We'll need to make sure each page only mentioned once to avoid such effects.</p>
+                When we open the page https://documentation.ubuntu.com/ulwazi/content/test2/ the NavMenu shows the menu item for this page duplicated:
+
+<img width="328" height="496" alt="Image" src="https://github.co ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-14</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/117">#117 Light/dark them switch should change icon</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Switching between the light and dark themes should be reflected in a change of the button icon. Also, I'd suggest changing the icon from a light bulb to the more often used (and more intuitive?) sun vs moon.</p>
+                Switching between the light and dark themes should be reflected in a change of the button icon. Also, I'd suggest changing the icon from a light bulb to the more often used (and more intuitive?) sun v ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-29</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/116">#116 Use a more eye-friendly color for dark-mode hover</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>The current hover color for the navig bar is way too contrasting in the dark mode. (And it's also radically different from the color used by the legacy Furo-based theme.)
+
+Consider:
+
+<img width="687" height="1096" alt="Image" src="https://github.com/user-attachments/assets/f6980ddb-1116-4abc-87a7-796316c36315" />
+
+And (for example):
+
+<img width="687" height="1096" alt="Image" src="https://github.com/user-attachments/assets/233bb460-2678-4c1b-954c-f21992d20151" /></p>
+                The current hover color for the navig bar is way too contrasting in the dark mode. (And it's also radically different from the color used by the legacy Furo-based theme.)
+
+Consider:
+
+<img width="687"  ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-29</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/pull/115">#115 Add Canonical workshop definition for building / running</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>No description provided.</p>
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-29</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/114">#114 [Feature request]  Additional help links on RHS bar</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Originally, the SP had links to the forums and IRC/matrix in the footers of the page. Later, they got moved to the "more resources" header dropdown, but that's not an intuitive place to find them.
+
+During a discussion with the Ubuntu Marketing counterparts, it was highlighted that we could make the "get help" section much more prominent/easier to find on each page by having these links near the feedback button on the RHS bar, to make the avenues for finding help much more clear.
+
+Specifically, what we're thinking is having links for:
+* "Chat to us" (linking to the project's matrix channel)
+* "Ask the forums" (linking to the project's discourse)
+
+Somewhere around the "give feedback" button.
+
+WDYT?</p>
+                Originally, the SP had links to the forums and IRC/matrix in the footers of the page. Later, they got moved to the "more resources" header dropdown, but that's not an intuitive place to find them.
+
+Du ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-26</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/113">#113 Avoid use of branding colors in buttons</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Problem
+
+Like the old Sphinx theme, Ulwazi currently uses Ubuntu orange in three places: the logo, the search icon, and the feedback button:
+
+<img width="1238" height="660" alt="Image" src="https://github.com/user-attachments/assets/2dd9f278-b7c6-49c2-a011-64f55ed620a7" />
+
+Using this color as the background of a button does not follow the recommendations in Vanilla: https://vanillaframework.io/docs/patterns/buttons
+
+> Brand-colored buttons are deprecated since Vanilla 4.9.0 and will be removed in future version of Vanilla. Please use another type of button instead.
+
+My understanding, based on conversations with @juanruitina (designer on the desktop team), is that there are at least two reasons for not using this background color for buttons:
+
+1. It is semantically confusing. Orange buttons are often warnings, and the color itself is close to semantic red (danger).
+
+2. It is an accessibility problem. It is difficult to get good contrast with white text on orange, and it can present readability issues.
+
+This is why it is avoided in the UX of Ubuntu Desktop itself.
+
+The contrast score for the feedback button is poor:
+
+<img width="221" height="78" alt="Image" src="https://github.com/user-attachments/assets/de5e5ec7-5e64-4bed-8d95-83629acd13a7" />
+
+It is improved by making the text black:
+
+<img width="218" height="78" alt="Image" src="https://github.com/user-attachments/assets/0f9892bd-311d-4e7b-8baf-f191f4764be5" />
+
+But is far better with just a white background:
+
+<img width="221" height="78" alt="Image" src="https://github.com/user-attachments/assets/966fdd79-85d9-4cec-9c21-fb5d5b8fe618" />
+
+Of course, using the orange for the Ubuntu logo is not a problem. That is the brand. The circle of friends does not need to be _read_ in the sense of text. I would also speculate that the occurrence of the other instances of the Ubuntu orange dilutes that branding, scattering it across the page in random places:
+
+<img width="1323" height="185" alt="Image" src="https://github.com/user-attachments/assets/e2c29504-77b3-4855-8e5d-94dc4e80f373" />
+
+## Proposal
+
+I would suggest removing the orange in both cases. With the feedback button being replaced with Vanilla's recommendation for a default button or positive action.
+
+Default (my preference, I think it looks clean):
+
+<img width="1250" height="678" alt="Image" src="https://github.com/user-attachments/assets/ac887ee0-2ec3-4d0d-9c32-6ae2c879186f" />
+
+Positive (also better):
+
+<img width="1257" height="895" alt="Image" src="https://github.com/user-attachments/assets/04daa113-8617-41a5-9bb6-ebfb3d72a638" />
+
+## Examples from canonical.com
+
+<img width="1430" height="477" alt="Image" src="https://github.com/user-attachments/assets/1bd24477-5a54-487e-a252-ee78de74baa5" />
+
+<img width="1420" height="371" alt="Image" src="https://github.com/user-attachments/assets/db5ddedb-654a-40eb-88be-bc44ed2d65fb" />
+
+</p>
+                ## Problem
+
+Like the old Sphinx theme, Ulwazi currently uses Ubuntu orange in three places: the logo, the search icon, and the feedback button:
+
+<img width="1238" height="660" alt="Image" src="https:/ ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-26</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/112">#112 Main navigation menu takes up too much space on smaller screens</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>(Using Ulwazi 0.5 on Ubuntu)
+
+When windows are tiled side-by-side on my screen (width ~950px), a hamburger menu shows up at the top left of the screen.
+But clicking on it creates an overlay that shows a search bar but not in an aesthetically pleasing way.
+
+<img width="974" height="1081" alt="Image" src="https://github.com/user-attachments/assets/2aa9f68e-afc5-4699-9c59-6f2e204665d4" />
+
+Also the main navigation menu on the left cannot be hidden and sits in full before the actual page content which takes up unnecessary space.
+<img width="974" height="1081" alt="Image" src="https://github.com/user-attachments/assets/fc10baa2-e244-4612-86cb-9400d6eb20ff" /></p>
+                (Using Ulwazi 0.5 on Ubuntu)
+
+When windows are tiled side-by-side on my screen (width ~950px), a hamburger menu shows up at the top left of the screen.
+But clicking on it creates an overlay that shows ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-21</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/111">#111 "Toggle side navigation" button does not do anything</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>(Ulwazi 0.5)
+
+The "Toggle side navigation" button does not seem to do anything.
+<img width="965" height="394" alt="Image" src="https://github.com/user-attachments/assets/79e38631-0eb1-4753-ab38-45270352d920" />
+
+When the windows are tiled side-by-side on my screen (width ~950px), I assumed the on-page navigation on the right would be hidden and the "Toggle side navigation" button would hide / display it. The whole on-page navigation is displayed currently and takes up a lot of space before the actual page content.
+
+I think the behaviour we have in the existing Sphinx Stack theme has a cleaner layout.
+
+<img width="972" height="177" alt="Image" src="https://github.com/user-attachments/assets/a2d58972-1b57-4d4a-b12b-734ccd6f848b" /></p>
+                (Ulwazi 0.5)
+
+The "Toggle side navigation" button does not seem to do anything.
+<img width="965" height="394" alt="Image" src="https://github.com/user-attachments/assets/79e38631-0eb1-4753-ab38-452703 ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-21</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/110">#110 Gap missing between code block and admoniiton</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>When including an admonition after a code block, a space is missing.
+
+This happens on page [how-to/slice-a-package.md](https://github.com/asanvaq/chisel-docs/blob/ulwazi/docs/how-to/slice-a-package.md) in the Chisel documentation under the ulwazi branch.
+
+To reproduce, clone the chisel-docs repository, check out the ulwazi branch, build the docs, and navigate to "How-to guides" > "Slice a package".
+
+### Screenshot
+
+Rendered page with Ulwazi theme:
+
+<img width="946" height="521" alt="Image" src="https://github.com/user-attachments/assets/405c1aa5-e3b9-4933-bf43-dcba07ba4b55" />
+
+### Markdown file
+
+Below is the corresponding code block and admonition: 
+
+
+    ```yaml
+    slices:
+      bins:
+        essential:
+          - libacl1_libs
+          - libc6_libs
+          - libselinux1_libs
+          - libtinfo6_libs
+          - vim-common_addons
+          - vim-common_config
+          - vim-tiny_config
+        contents:
+          /usr/bin/vim.tiny:
+    ```
+
+    ```{tip}
+    Sometimes, a package (and thus its slices) may have "essential"
+    dependencies that are not explicitly listed in the package's
+    [`control` file].
+    E.g. OpenSSL's `c_rehash` requires Perl to run, but the OpenSSL package
+    does not mention it. The same happens frequently for Bash scripts that may
+    assume certain packages (like `coreutils`) are installed.
+    ```
+
+</p>
+                When including an admonition after a code block, a space is missing.
+
+This happens on page [how-to/slice-a-package.md](https://github.com/asanvaq/chisel-docs/blob/ulwazi/docs/how-to/slice-a-package.md ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-15</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/106">#106 Make tracking/analytics configurable</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Let's make the container ID configurable for Google Tag Manager.
+It may be useful later or just for usage outside of Canonical.</p>
+                Let's make the container ID configurable for Google Tag Manager.
+It may be useful later or just for usage outside of Canonical.   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-08</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/105">#105 Additional line is rendered when including code in admonition</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>When including a line of code in an admonition, an additional line is rendered.
+
+This happens on page [how-to/slice-a-package.md](https://github.com/asanvaq/chisel-docs/blob/ulwazi/docs/how-to/slice-a-package.md) in the Chisel documentation under the ulwazi branch.
+
+To reproduce, clone the chisel-docs repository, check out the ulwazi branch, build the docs, and navigate to "How-to guides" > "Slice a package".
+
+### Screenshot
+
+Rendered page with Ulwazi theme:
+
+<img width="800" height="204" alt="Image" src="https://github.com/user-attachments/assets/48647143-e1ac-4bef-a01d-6f4bcd85a518" />
+
+### Markdown file
+
+Below is the corresponding admonition: 
+
+    ```{important}
+    If any of your slices' paths are architecture-specific, you must add the
+    `arch` field. For
+    [example](https://github.com/canonical/chisel-releases/blob/e5db53e97e03c46944a84e7ab5abeb1b7cb53cd9/slices/libc6.yaml#L29):
+
+    >  `/usr/lib/*-linux-*/libmvec.so.*: {arch: [amd64, arm64]}`
+    ```</p>
+                When including a line of code in an admonition, an additional line is rendered.
+
+This happens on page [how-to/slice-a-package.md](https://github.com/asanvaq/chisel-docs/blob/ulwazi/docs/how-to/slice-a ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-08</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/101">#101 Split Ulwazi extensions into core and optional</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Core extensions are needed for it to work with minimal docs (like a single empty page or something like that).
+Optional extensions are needed for our Ulwazi demo to work.
+
+P.S. We are aiming to include all main fatures in our demo docs to test them.</p>
+                Core extensions are needed for it to work with minimal docs (like a single empty page or something like that).
+Optional extensions are needed for our Ulwazi demo to work.
+
+P.S. We are aiming to includ ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-04-30</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/100">#100 feat: add visual distinction to content that belongs to a tab</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Currently there is no clear delimiter to indicate the boundary between content that belongs to a tab versus the rest of the page.
+
+For example, in the screenshot below (taken from the rendered version of [this page](https://github.com/canonical/mongo-single-kernel-library/blob/ulwazi-test/docs/how-to/deploy/via-juju-cli.md)), the content that belongs to the active tab is just the `juju deploy ...` command.
+
+<img width="920" height="274" alt="Image" src="https://github.com/user-attachments/assets/fe5d5326-4bc2-4713-ac4d-d89ec8d8bd8a" />
+
+Since there can be irregular and subtle differences between instructions that belong to different tabs, it could be helpful for the user to have a visual indicator of tab boundaries.</p>
+                Currently there is no clear delimiter to indicate the boundary between content that belongs to a tab versus the rest of the page.
+
+For example, in the screenshot below (taken from the rendered version ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-04-28</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/99">#99 note block inside of a tab-item cuts off at the margin</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>The full width of the "Note" block inside the "K8s" tab cuts off at the right margin, and there is no way of scrolling to reveal the rest of the content.
+
+This happens on page [`how-to/monitoring/view-metrics.md`](https://github.com/canonical/mongo-single-kernel-library/blob/ulwazi-test/docs/how-to/monitoring/view-metrics.md) in the Charmed MongoDB documentation under the `ulwazi-test` branch.
+
+To reproduce, clone the `mongo-single-kernel-library` repository, check out the `ulwazi-test` branch, build the docs, and navigate to "How-to guides" > "Monitoring" > "View metrics".
+
+### Screenshots
+
+Rendered page with Ulwazi theme:
+
+<img width="1167" height="729" alt="Image" src="https://github.com/user-attachments/assets/d7af5bb8-7402-48d1-8159-fd11bbe5fbbd" />
+
+It seems like all contents of {tab-item} overflow. 
+ 
+<img width="1853" height="790" alt="Image" src="https://github.com/user-attachments/assets/7a2c23b3-0f17-4a40-a28d-f2a594deff1f" />
+
+For comparison, this is the [same page](https://canonical-charmed-mongodb.readthedocs-hosted.com/8/how-to/monitoring/view-metrics/) with the current **Furo** theme:
+
+<img width="1649" height="797" alt="Image" src="https://github.com/user-attachments/assets/dbc3f26b-e4e9-4054-af48-f8ea9125348b" />
+
+### Markdown file
+
+Below is the corresponding section of `view-metrics.md` that is shown in the screenshot.
+
+See [`how-to/monitoring/view-metrics.md`](https://github.com/canonical/mongo-single-kernel-library/blob/ulwazi-test/docs/how-to/monitoring/view-metrics.md) for more.
+
+``````
+(access-metrics-with-grafana)=
+## Access metrics with Grafana
+
+Charmed MongoDB supports integration with the [Canonical Observability Stack (COS)](https://charmhub.io/topics/canonical-observability-stack), which enables the usage of observability tools like Grafana, Loki, and Prometheus. 
+
+
+`````{tab-set}
+````{tab-item} VM
+:sync: vm
+
+<some text>
+
+````{tab-item} K8s
+:sync: k8s
+
+First, deploy the [`cos-lite` bundle](https://charmhub.io/cos-lite). Follow the [COS deployment tutorial](https://charmhub.io/topics/canonical-observability-stack/tutorials/install-microk8s)
+
+Wait for the status of the `cos-lite` bundle to become `active` and `idle`.
+
+```{note}
+Make sure to use the following offers:
+
+    https://raw.githubusercontent.com/canonical/cos-lite-bundle/09715997467e1b568109064fa17ecefd4b574032/overlays/offers-overlay.yaml
+    https://raw.githubusercontent.com/canonical/cos-lite-bundle/09715997467e1b568109064fa17ecefd4b574032/overlays/storage-small-overlay.yaml
+
+They contain the `prometheus-scrape` endpoint, which is essential to our stack, but was removed from the example offer of the bundle.
+```
+
+<some text>
+``````</p>
+                The full width of the "Note" block inside the "K8s" tab cuts off at the right margin, and there is no way of scrolling to reveal the rest of the content.
+
+This happens on page [`how-to/monitoring/view ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-04-28</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/97">#97 Test the theme on mobile devices</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>We need to make sure, that the theme works well on mobile devices by testing it on some of the most relevant environments, including smaller screeens, mobile web-browsers, etc.</p>
+                We need to make sure, that the theme works well on mobile devices by testing it on some of the most relevant environments, including smaller screeens, mobile web-browsers, etc.   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-04-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/90">#90 Tested docs: several build failures</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Cross posted in the Starter Pack docs because some of them are documentation issues
+https://github.com/canonical/sphinx-docs-starter-pack/issues/580
+https://github.com/canonical/sphinx-docs-starter-pack/issues/581
+
+I tried to follow the docs and ran into multiple build failures. Mostly missing deps, but also some missing commas in the code blocks. I haven't managed to get the build to pass yet on my docs.</p>
+                Cross posted in the Starter Pack docs because some of them are documentation issues
+https://github.com/canonical/sphinx-docs-starter-pack/issues/580
+https://github.com/canonical/sphinx-docs-starter-pa ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-04-14</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/89">#89 Formatting for grid</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p><img width="828" height="339" alt="Image" src="https://github.com/user-attachments/assets/1ac884a5-8d98-46b3-ac80-a8c5bb2dca5d" />
+
+The formatting and spacing for `grid` and `grid-item-cards` needs to be adjusted. </p>
+                <img width="828" height="339" alt="Image" src="https://github.com/user-attachments/assets/1ac884a5-8d98-46b3-ac80-a8c5bb2dca5d" />
+
+The formatting and spacing for `grid` and `grid-item-cards` needs to ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-04-14</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/81">#81 Font size of numbers in numerated lists seems too big</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p><img width="246" height="371" alt="Image" src="https://github.com/user-attachments/assets/aedb3a60-673b-4e4b-b187-9a3e0cff96b7" /></p>
+                <img width="246" height="371" alt="Image" src="https://github.com/user-attachments/assets/aedb3a60-673b-4e4b-b187-9a3e0cff96b7" />   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">edibotopic </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-03-18</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/80">#80 Support ability to apply external-link icon to links</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Sometimes it's useful to have a link open in a new tab. For such links, a common pattern on the web is to put a box-with-arrow icon after the link. Vanilla has a suitable icon called `external-link`. It would be great if Ulwazi supported a way to decorate links with this icon (on a per-link basis).
+
+This issue is only about applying the icon, not about deciding/controlling which links open in a new tab. I think that can be left to the authors of the docs.
+
+---
+
+Additional context, for interest: The [`sphinx-new-tab-link`](https://github.com/ftnext/sphinx-new-tab-link) extension can automatically make external links open in a new tab and apply a similar icon to Vanilla's `external-link` icon. Personally, I don't want to use this extension in my docs, because I don't think external links should be new-tab by default. See [GOV.UK Design System](https://design-system.service.gov.uk/styles/links/#opening-links-in-a-new-tab).</p>
+                Sometimes it's useful to have a link open in a new tab. For such links, a common pattern on the web is to put a box-with-arrow icon after the link. Vanilla has a suitable icon called `external-link`.  ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-03-17</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/ulwazi/issues/79">#79 `convert_tabs` is too long for a single function</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>The length and cyclomatic complexity of `convert_tabs` greatly exceeds recommended standards.
+
+This was ignored in my linting of Ulwazi because of its nontrivial nature, but it should be addressed in a follow-up pass.
+
+```bash
+PLR0912 Too many branches (55 > 12)
+ --> ulwazi/tabs.py:7:5
+  |
+7 | def convert_tabs(body_html: str) -> str:
+  |     ^^^^^^^^^^^^
+8 |     """Convert sphinx-tabs markup to vanilla theme classes and structure."""
+9 |     if not body_html:
+  |
+
+PLR0915 Too many statements (165 > 50)
+ --> ulwazi/tabs.py:7:5
+  |
+7 | def convert_tabs(body_html: str) -> str:
+  |     ^^^^^^^^^^^^
+8 |     """Convert sphinx-tabs markup to vanilla theme classes and structure."""
+9 |     if not body_html:
+  |
+```
+
+To close this issue, we'll need to:
+* Remove the `noqa`
+* Split the function into logical pieces and simplify logic when possible</p>
+                The length and cyclomatic complexity of `convert_tabs` greatly exceeds recommended standards.
+
+This was ignored in my linting of Ulwazi because of its nontrivial nature, but it should be addressed in  ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">jahn-junior </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-03-11</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/811">#811 Tentacle 20.2.1: Dashboard fails to start due to missing mgr/smb module (ModuleNotFoundError: No module named 'smb')</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Environment
+
+## MicroCeph
+
+```
+Name: microceph
+Channel: tentacle/stable
+Version: 20.2.1+snap074a450407
+Revision: 1834
+```
+
+The same issue is also reproducible with:
+
+```
+Channel: tentacle/candidate
+Revision: 1856
+```
+
+## Ceph
+
+```
+ceph version 20.2.1 (6a49aff47758778a5f5951e731d437c317f72fb2)
+tentacle (stable)
+```
+
+Ubuntu 24.04 LTS.
+
+---
+
+# Summary
+
+Enabling the Dashboard module causes the manager to fail with:
+
+```
+ModuleNotFoundError: No module named 'smb'
+```
+
+The Dashboard never starts and no process listens on the configured HTTP port.
+
+This appears to be a packaging issue where the Dashboard SMB controller is present but the corresponding `mgr/smb` module is not included in the MicroCeph snap.
+
+---
+
+# Steps to reproduce
+
+Enable the dashboard:
+
+```bash
+ceph mgr module enable dashboard
+```
+
+Configure HTTP:
+
+```bash
+ceph config set mgr mgr/dashboard/ssl false
+ceph config set mgr mgr/dashboard/server_port 7000
+```
+
+Create the dashboard user.
+
+Restart the dashboard (or restart the manager).
+
+---
+
+# Expected behaviour
+
+Dashboard starts successfully and listens on the configured port.
+
+Example:
+
+```
+http://<manager-ip>:7000
+```
+
+---
+
+# Actual behaviour
+
+Cluster health reports:
+
+```
+HEALTH_ERR
+Module 'dashboard' has failed:
+No module named 'smb'
+```
+
+The dashboard service is advertised:
+
+```bash
+ceph mgr services
+```
+
+returns
+
+```json
+{
+    "dashboard": "http://192.168.88.43:7000/"
+}
+```
+
+However no process actually listens on port 7000:
+
+```bash
+ss -ltnp | grep 7000
+```
+
+returns nothing.
+
+---
+
+# Traceback
+
+```
+Unhandled exception from module 'dashboard'
+
+File "/usr/share/ceph/mgr/dashboard/controllers/smb.py", line 8
+
+from smb.enums import Intent
+
+ModuleNotFoundError: No module named 'smb'
+```
+
+---
+
+# Investigation
+
+Inside the MicroCeph runtime:
+
+```
+SNAP=/snap/microceph/1834
+
+PYTHONPATH=/snap/microceph/1834/lib/python3/dist-packages:
+/snap/microceph/1834/lib/python3.12/site-packages
+```
+
+The Dashboard controller exists:
+
+```
+/usr/share/ceph/mgr/dashboard/controllers/smb.py
+```
+
+However the corresponding manager module does not exist:
+
+```bash
+ls -la /usr/share/ceph/mgr/smb
+```
+
+returns
+
+```
+No such file or directory
+```
+
+The manager module directory contains:
+
+```
+alerts
+balancer
+crash
+dashboard
+devicehealth
+...
+nfs
+orchestrator
+prometheus
+...
+```
+
+but no `smb` directory.
+
+Python import also confirms the missing package:
+
+```bash
+python3 -c "import smb"
+```
+
+returns
+
+```
+ModuleNotFoundError: No module named 'smb'
+```
+
+This indicates that:
+
+* `dashboard/controllers/smb.py` is present
+* `mgr/smb` is missing
+* importing `smb.enums` therefore always fails
+* the Dashboard aborts startup before opening the configured port
+
+---
+
+# Related upstream work
+
+This appears to match the packaging issue addressed by upstream Ceph PR:
+
+https://github.com/ceph/ceph/pull/67510
+
+The PR description states that the Dashboard imports the SMB manager module while the package was not installed by `ceph-mgr-modules-core`.
+
+It looks like the fix is not present in the current MicroCeph Tentacle snap (1834 and 1856).
+
+---
+
+# Additional observations
+
+While investigating I noticed a few additional import errors during Dashboard startup:
+
+```
+Module 'jmespath' is not installed.
+Module 'xmltodict' is not installed.
+```
+
+and
+
+```
+Failed to import NVMeoFClient
+```
+
+These do **not** appear to be the direct cause of the Dashboard startup failure.
+
+The fatal exception remains:
+
+```
+ModuleNotFoundError: No module named 'smb'
+```
+
+However they may indicate additional packaging inconsistencies affecting optional Dashboard components.
+
+---
+
+# Possible root cause
+
+Based on the above investigation, the issue appears to be a packaging inconsistency inside the MicroCeph snap:
+
+* Dashboard SMB controller is included.
+* The corresponding `mgr/smb` module is missing.
+* Dashboard unconditionally imports `smb.enums`.
+* Dashboard aborts initialization before CherryPy starts serving requests.
+
+If the SMB manager module is optional, another possible improvement would be for the Dashboard to gracefully skip loading the SMB controller when the module is unavailable instead of preventing the entire Dashboard from starting.
+
+---
+
+Thank you for your work on MicroCeph.
+</p>
+                # Environment
+
+## MicroCeph
+
+```
+Name: microceph
+Channel: tentacle/stable
+Version: 20.2.1+snap074a450407
+Revision: 1834
+```
+
+The same issue is also reproducible with:
+
+```
+Channel: tentacle/candidate
+ ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-24</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/810">#810 RGW admin datalog request segfaults radosgw (upstream Ceph 20.2.1)</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+On the `tentacle/candidate` snap channel, `radosgw` crashes (SIGSEGV) handling a routine admin HTTP request. RGW (RADOS Gateway) multisite data sync issues this request automatically and continuously, so any two `tentacle/candidate` clusters configured for RGW multisite crash-loop `radosgw` and object data never replicates. Metadata sync is unaffected.
+
+This is an **upstream Ceph 20.2.1 defect**, not a MicroCeph code issue — see "Root cause" below — but it currently makes `tentacle/candidate` unusable for RGW replication work (blocking CE062).
+
+## Environment
+
+```
+$ snap info microceph | grep candidate
+$ microceph.radosgw-admin --version
+ceph version 20.2.1 (6a49aff47758778a5f5951e731d437c317f72fb2) tentacle (stable)
+```
+Two single-node clusters, LXD containers, `microceph disk add loop,4G,3` (3 OSDs each), both `HEALTH_OK`.
+
+## Steps to reproduce
+
+Three scripts, each self-contained (run inside a fresh Ubuntu 24.04 host/VM with LXD and internet access), all tested and attached alongside this report:
+
+| Script | What it shows |
+|---|---|
+| [reproduce-microceph-minimal.sh](https://github.com/user-attachments/files/30326991/reproduce-microceph-minimal.sh) | One MicroCeph cluster, no multisite, no peer zone, no user data. Enables RGW and sends one signed admin request that crashes it. Fastest way to confirm the bug. |
+| [reproduce-microceph-multisite.sh](https://github.com/user-attachments/files/30326992/reproduce-microceph-multisite.sh) | The real-world scenario: two MicroCeph clusters paired for RGW multisite. No manual trigger needed — data sync polls the crashing endpoint on its own every ~30s. |
+| [reproduce-vanilla-packages.sh](https://github.com/user-attachments/files/30326993/reproduce-vanilla-packages.sh) | Same crash with **no MicroCeph or snap at all** — plain `.deb` packages, hand-built cluster, real systemd units. Proves this is an upstream Ceph defect, not MicroCeph's packaging. |
+
+The crash itself, condensed (what `reproduce-microceph-minimal.sh` does): enable RGW on a single MicroCeph cluster, then send one signed admin request. `curl`'s built-in AWS SigV4 support (7.75+) is enough — no scripting required:
+
+```bash
+UJ=$(microceph.radosgw-admin user info --uid=sync-user)
+AK=$(echo "$UJ" | jq -r .keys[0].access_key)
+SK=$(echo "$UJ" | jq -r .keys[0].secret_key)
+
+# no crash — plain shard count:
+curl --aws-sigv4 "aws:amz:us-east-1:s3" --user "$AK:$SK" \
+  "http://localhost:80/admin/log?type=data"
+# {"num_objects":128}
+
+# CRASHES radosgw:
+curl --aws-sigv4 "aws:amz:us-east-1:s3" --user "$AK:$SK" \
+  "http://localhost:80/admin/log?type=data&id=0&info"
+# curl: (52) Empty reply from server
+```
+
+Multisite data sync issues exactly this second request to its peer zone on every sync cycle, which is why `reproduce-microceph-multisite.sh` needs no manual trigger at all — it crash-loops on its own once two zones are paired.
+
+## Expected vs actual
+
+- Expected: `data sync` reaches `caught up with source`; objects written on one zone appear on the other.
+- Actual: `data sync` stays at `full sync: 128/128 shards` forever. `radosgw` segfaults every ~30s. `sync status` intermittently prints `failed to retrieve sync info: (2200) Unknown error 2200` — a side-effect of the crash (see below), not the real error.
+
+## Root cause
+
+```
+*** Caught signal (Segmentation fault) **
+ in thread thread_name:io_context_pool
+ ceph version 20.2.1 (6a49aff47758778a5f5951e731d437c317f72fb2) tentacle (stable)
+ 2: (std::rethrow_exception(...)+0x1e)
+ 3: (int rgw::run_coro<...RGWDataChangesLogInfo...>(...)+0x6dd)
+ 4: (RGWOp_DATALog_ShardInfo::execute(optional_yield)+0x2bd)
+ 5: (rgw_process_authenticated(...)+0xab5)
+ 6: (process_request(...)+0x1df5)
+ 10: make_fcontext()
+```
+
+## Not a MicroCeph issue
+
+- MicroCeph's own patches (`patches/0001-*`, `patches/0003-*`) touch only the orchestrator and an SMB stub — nothing in RGW.
+- Reproduced by [`reproduce-vanilla-packages.sh`](reproduce-vanilla-packages.sh) on **plain `.deb` packages, no snap**: `ceph-mon`/`ceph-osd`/`radosgw` 20.2.1 from `ppa:lmlogiudice/ceph-tentacle-rc` (the same PPA `tentacle/candidate` pulls), a hand-built single-node cluster (real systemd units, no cephadm/container). Same crash, same commit hash. `systemd` logged the exit explicitly: `Main process exited, code=dumped, status=11/SEGV`.
+- Squid 19.2.3 (`squid/stable`), identical procedure: no crash, data sync converges normally.
+
+This is a pure upstream Ceph 20.2.1 defect, not something in MicroCeph's snap build, patches, or confinement.
+</p>
+                ## Summary
+
+On the `tentacle/candidate` snap channel, `radosgw` crashes (SIGSEGV) handling a routine admin HTTP request. RGW (RADOS Gateway) multisite data sync issues this request automatically and c ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/809">#809 feat: add radosgw-admin multisite read wrappers</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Description
+
+Add plumbing for RGW multisite replication
+* radosgw-admin exec wrapper with a remote-cluster variant and typed
+* JSON-backed wrappers for realm get, zonegroup get, zone get, metadata sync status, per-source data sync status, and the mdlog/datalog head markers.
+
+Failing commands yield zero-value results with a nil error, mirroring the RBD wrapper contract, so the upcoming replication handler can treat an unconfigured gateway as ordinary disabled state.
+
+Fixtures are captured from a live two-site squid deployment, covering master, secondary and unconfigured views.
+
+Nothing calls this code yet; the replication handler arrives in a follow-up.
+
+## Type of change
+
+- New feature (non-breaking change which adds functionality)
+
+## How has this been tested?
+
+Mocked unit tests exercise new functions
+
+## Contributor checklist
+
+Please check that you have:
+
+- [ ] self-reviewed the code in this PR
+- [ ] added code comments, particularly in less straightforward areas
+- [ ] checked and added or updated relevant documentation
+- [ ] added tests to verify effectiveness of this change</p>
+                # Description
+
+Add plumbing for RGW multisite replication
+* radosgw-admin exec wrapper with a remote-cluster variant and typed
+* JSON-backed wrappers for realm get, zonegroup get, zone get, metada ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/808">#808 osd.start `set -eu` prevents LUKS unlock of subsequent OSDs when one OSD fails to start</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Bug Report: osd.start `set -eu` prevents LUKS unlock of subsequent OSDs when one OSD fails to start
+
+## Summary
+
+The `snapcraft/commands/osd.start` script uses `set -eu` and runs `ceph-osd` in the foreground for each OSD in alphabetical order. If one OSD fails to start (e.g., bluestore corruption), the script exits immediately due to `set -e`, preventing any subsequent OSDs from being processed — including their LUKS unlock step. This leaves later OSDs permanently down after a reboot until manually unlocked.
+
+## Environment
+
+- **MicroCeph Version:** 19.2.3+snapafb6a3a0cb (squid/stable, snap revision 1641)
+- **MicroCloud:** 2.1.2-9cfe3d5
+- **OS:** Ubuntu 24.04.4 LTS (Noble Numbat)
+- **Kernel:** 6.8.0-136-generic
+- **Storage:** 3x Samsung MZQL2960HCJR 894GB NVMe SSDs
+  - osd.8: nvme1n1 (LUKS encrypted)
+  - osd.9: nvme2n1 (LUKS encrypted)
+  - osd.10: nvme0n1 (unencrypted)
+
+## Steps to Reproduce
+
+1. Deploy a MicroCeph cluster with 3 OSDs, where osd.8 and osd.9 use LUKS encryption and osd.10 does not.
+2. Introduce a bluestore corruption on osd.8 (e.g., via an unclean shutdown while writing).
+3. Reboot the node.
+4. Observe that:
+   - osd.10 starts successfully (processed first alphabetically: `ceph-10`)
+   - osd.8 is unlocked successfully by `maybe_unlock()`, but `ceph-osd --id 8` fails with bluestore fsck error → script exits due to `set -eu`
+   - osd.9 is **never reached** in the loop → `luksosd-9` mapper device is never created → osd.9 stays down permanently
+
+## Root Cause
+
+In `snapcraft/commands/osd.start`:
+
+```bash
+#!/bin/bash
+set -eu                          # ← exits on ANY error
+
+spawn() {
+    for i in "${SNAP_COMMON}/data/osd"/*; do
+        # ... (alphabetical order: ceph-10, ceph-8, ceph-9)
+
+        if [ -b "${i}/unencrypted" ] ; then
+            maybe_unlock "${i}/unencrypted" "${nr}" "$( get_key "${nr}" )"
+        fi
+
+        ceph-osd --cluster ceph --id "${nr}"   # ← runs in FOREGROUND, blocks
+        # If this exits non-zero, set -e kills the entire script
+    done
+}
+```
+
+The script iterates OSD directories alphabetically (`ceph-10`, `ceph-8`, `ceph-9`) and runs `ceph-osd` in the foreground for each. When `ceph-osd` fails (e.g., bluestore corruption), `set -eu` causes the script to exit before it reaches subsequent OSDs in the iteration. Those OSDs never get their `maybe_unlock()` called, so their LUKS devices remain locked.
+
+This is a different bug from #655 (which was about WAL/DB devices not being unlocked). Here, the issue is that the entire `maybe_unlock` step is skipped for OSDs that come after a failing OSD in the iteration order.
+
+## Observed Behavior
+
+After a reboot with osd.8 having bluestore corruption:
+
+```
+$ sudo ceph osd tree
+ID  CLASS  WEIGHT   TYPE NAME       STATUS
+ 8    ssd  0.87329  osd.8     down    ← bluestore corruption (expected)
+ 9    ssd  0.87329  osd.9     down    ← NOT unlocked, never reached by script
+10    ssd  0.87328  osd.10    up      ← started first (alphabetical: ceph-10)
+
+$ sudo dmsetup ls
+luksosd-8   (252:0)              ← unlocked by maybe_unlock before osd.8 failed
+                               ← luksosd-9 MISSING: never created
+```
+
+OSD service crash-loops because osd.8 fails, but osd.9's LUKS device is never created:
+```
+Jul 22 20:06:47 vds1 microceph.osd[1539132]: bluestore(/var/lib/ceph/osd/ceph-8) fsck error: stray spanning blob found:27
+Jul 22 20:07:01 vds1 microceph.osd[1539132]: osd.8 0 OSD:init: unable to mount object store
+Jul 22 20:07:01 vds1 microceph.osd[1539132]: ** ERROR: osd init failed: (5) Input/output error
+Jul 22 20:07:02 vds1 systemd[1]: snap.microceph.osd.service: Main process exited, code=exited, status=250/n/a
+```
+
+## Expected Behavior
+
+All LUKS-encrypted OSDs should be unlocked before any `ceph-osd` is started, or the script should continue to the next OSD when one fails, rather than exiting entirely.
+
+## Proposed Fix
+
+### Option A: Separate unlock pass from spawn pass
+
+Unlock all LUKS devices first, then start OSDs with error tolerance:
+
+```bash
+spawn() {
+    # Pass 1: Unlock all LUKS devices
+    for i in "${SNAP_COMMON}/data/osd"/*; do
+        filename="$(basename "${i}")"
+        [ -z "$filename" ] && continue
+        nr="${filename##ceph-}"
+        [ -z "$nr" ] && continue
+        [ ! -e "${i}/ready" ] && continue
+
+        if [ -b "${i}/unencrypted" ] ; then
+            maybe_unlock "${i}/unencrypted" "${nr}" "$( get_key "${nr}" )" || true
+        fi
+    done
+
+    # Pass 2: Start OSDs (don't exit on single OSD failure)
+    for i in "${SNAP_COMMON}/data/osd"/*; do
+        filename="$(basename "${i}")"
+        [ -z "$filename" ] && continue
+        nr="${filename##ceph-}"
+        [ -z "$nr" ] && continue
+        [ ! -e "${i}/ready" ] && continue
+        is_osd_running "${nr}" && continue
+
+        ceph-osd --cluster ceph --id "${nr}" &
+    done
+
+    wait
+    sleep infinity &
+    wait
+}
+```
+
+### Option B: Background each ceph-osd and use `|| true`
+
+```bash
+spawn() {
+    for i in "${SNAP_COMMON}/data/osd"/*; do
+        # ... existing checks ...
+        if [ -b "${i}/unencrypted" ] ; then
+            maybe_unlock "${i}/unencrypted" "${nr}" "$( get_key "${nr}" )"
+        fi
+        ceph-osd --cluster ceph --id "${nr}" &    # background, don't block
+    done
+    wait
+    sleep infinity &
+    wait
+}
+```
+
+## Workaround
+
+Add LUKS entries to `/etc/crypttab` so the OS unlocks all encrypted OSD devices at boot, before the MicroCeph OSD service starts. See: [MicroCeph LUKS auto-unlock fix](https://github.com/canonical/microceph/issues/655#issuecomment-...)
+
+## Related Issues
+
+- #655 — OSD fails to start after reboot if using encrypted WAL or DB devices (same file, different bug — WAL/DB unlock was missing)
+- #34 — Add support for LUKS encryption</p>
+                # Bug Report: osd.start `set -eu` prevents LUKS unlock of subsequent OSDs when one OSD fails to start
+
+## Summary
+
+The `snapcraft/commands/osd.start` script uses `set -eu` and runs `ceph-osd` in the f ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-23</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/807">#807 snap: rebase onto core26 (resolute)</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+Rebases the snap from core24 onto core26. Resolute ships ceph 20.2.0
+(Tentacle) in the Ubuntu archive, so the interim
+`lmlogiudice/ceph-tentacle-rc` PPA is dropped entirely.
+
+Five changes, one per commit:
+
+1. **base: core26** — PPA removed, python path references updated
+   3.12 -> 3.14 (resolute default).
+2. **dqlite v1.17.0 -> v1.18.7** — v1.17.0's `float_t` typedef clashes
+   with glibc `math.h` via newer libuv, and v1.18.4 still trips
+   dqlite's `-Werror` default under gcc 15 (C23 const-generic
+   `memchr`). v1.18.7 compiles clean.
+3. **Bundle python3.14** — core26 ships the python3.14 stdlib in the
+   base but no interpreter binary (core24 shipped both), so `bin/ceph`
+   and the other python scripts need an in-snap `python3` on PATH.
+4. **microceph-orch via pip --target** — the python plugin's venv
+   finishes by symlinking a base interpreter that no longer exists (and
+   the ceph part's organize moves the staged one out of the plugin's
+   search paths). The venv was only a build vehicle; pip installs the
+   same site-packages content directly.
+5. **rust-coreutils for `truncate`** — resolute's `coreutils` is an
+   empty transitional package after the uutils migration; `truncate`
+   (used by loop-file OSD creation) now lives in the rust-coreutils
+   multicall binary, which snapcraft's essential-package filtering
+   skips unless listed explicitly.
+
+## Testing
+
+Built with snapcraft 9.0.0.post69 (latest/edge), installed
+`--dangerous` in a fresh noble LXD VM with the usual manual plug
+connections:
+
+- `microceph cluster bootstrap` -> mon/mgr/mds up
+- `microceph disk add loop,1G,3` -> 3 OSDs up/in, `HEALTH_OK`
+  (exercises the bundled uutils `truncate`)
+- `microceph.ceph -s` works (proves the `env python3` shebang path)
+- `ceph versions`: 20.2.0 tentacle across all 6 daemons
+- `ceph mgr module enable microceph` + `ceph orch set backend
+  microceph` -> `Backend: microceph, Available: Yes` (proves the
+  pip-installed deps import)
+
+## Open questions (why draft)
+
+- Staged python is 3.14.4 vs base stdlib 3.14.3: works, but we could
+  instead rely on the base stdlib and drop the staged copy (~30M).
+- The `patches/` loop in the ceph part is not idempotent across
+  incremental rebuilds (`patch` creates files in `$CRAFT_STAGE` that
+  craft-parts does not track); any re-stage without a full
+  `snapcraft clean` collides.
+- rust-coreutils vs gnu-coreutils: resolute also packages
+  gnu-coreutils if uutils `truncate` behavior is a concern.
+- CI runners need a snapcraft with core26 support.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)</p>
+                ## Summary
+
+Rebases the snap from core24 onto core26. Resolute ships ceph 20.2.0
+(Tentacle) in the Ubuntu archive, so the interim
+`lmlogiudice/ceph-tentacle-rc` PPA is dropped entirely.
+
+Five changes, ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-22</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/806">#806 [vuln-scan] govulncheck found called-path vulnerabilities</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Daily govulncheck scan of `microceph/` on `main` (commit `b8f87722eeb291dd0f8fc6ae7ea38d963e8f49e5`).
+
+Workflow run: https://github.com/canonical/microceph/actions/runs/29898358972
+
+## Called-path vulnerabilities: 1
+
+```
+GO-2026-5970
+```
+
+See the workflow run logs for full call-stack traces.
+</p>
+                Daily govulncheck scan of `microceph/` on `main` (commit `b8f87722eeb291dd0f8fc6ae7ea38d963e8f49e5`).
+
+Workflow run: https://github.com/canonical/microceph/actions/runs/29898358972
+
+## Called-path vul ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-22</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/805">#805 doc: Add bootstrap context to tutorial</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Description
+
+Adds brief context to the “Initialise your cluster” section of the MicroCeph tutorial, explaining what bootstrapping does at a high level before the user runs `microceph cluster bootstrap`.
+
+This helps new users understand that bootstrap creates the initial cluster configuration and keys, registers the first node, and starts the core Ceph services.
+
+Fixes: https://github.com/canonical/open-documentation-academy/issues/352#event-28082347486
+
+## Type of change
+
+- Documentation update (change to documentation only)
+
+## How has this been tested?
+
+- Ran `git diff --check` successfully.
+- Attempted a local Sphinx build with `sphinx-build --fail-on-warning --keep-going -b dirhtml . _build -c . -d _dev\.doctrees -D llms_txt_enabled=0`, but it could not complete because the local environment is missing the `canonical_sphinx` Python package.
+
+## Contributor checklist
+
+Please check that you have:
+
+- [x] self-reviewed the code in this PR
+- [x] added code comments, particularly in less straightforward areas
+- [x] checked and added or updated relevant documentation
+- [ ] added or updated HTML meta descriptions for any new or modified documentation pages (see [#643](https://github.com/canonical/microceph/pull/643))
+- [x] verified that page title and headings accurately represent page content for new or modified documentation pages
+- [ ] checked and added or updated relevant release notes
+- [ ] added tests to verify effectiveness of this change</p>
+                # Description
+
+Adds brief context to the “Initialise your cluster” section of the MicroCeph tutorial, explaining what bootstrapping does at a high level before the user runs `microceph cluster boots ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-16</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/802">#802 Native SMB support via mgr/smb (phase 1)</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>Adds native SMB file sharing to MicroCeph: CephFS subvolumes served by Samba, CTDB-clustered for HA, driven end to end by the upstream `ceph smb` manager module. MicroCeph implements the mgr/smb orchestrator contract, so the user-facing surface (CLI, declarative resources, dashboard) is the documented upstream experience.
+
+Jira: CEPH-1240
+
+## Architecture
+
+`ceph smb` (mgr/smb, packaged in-snap) -> `microceph` orchestrator module (`apply_smb` / `remove_service` / `describe_service`) -> microcephd REST (`/1.0/services/smb*`) -> per-node rendering (sambacc-based smb.conf, native ctdb.conf/nodes/public_addresses) -> ctdbd manages smbd via a snapctl event script. The SMBSpec is stored verbatim as the grouped-service config (NFS precedent); apply is idempotent and convergent. Passdb users are seeded automatically from the spec's `user_sources` on every apply.
+
+## Highlights
+
+- Samba/CTDB/sambacc packaged in the snap; RADOS mutex helper as the CTDB cluster lock; runtime paths survive snap refreshes.
+- Strict spec validation with actionable errors (unsupported features/fields, placement limits, node-disjoint hospitality on port 445).
+- The packaged mgr/smb carries a one-hunk patch (`patches/mgr-smb/`) expanding the default share provider to `samba-vfs/new`: MicroCeph serves shares via direct libcephfs and deploys no cephfs-proxy daemon, so the plain `ceph smb share create` works natively. Explicit `samba-vfs/proxied` requests are rejected. An upstream RFE to make the default configurable will retire the patch.
+- Hidden `microceph smb` debug CLI for support.
+
+## Testing
+
+- Go unit suites: validation/placement, apply orchestration + seeding, keyrings, rendering (golden files), lifecycle (incl. snap-refresh and regenerate regressions), user seeding, startup re-enablement.
+- microceph-orch pytest (wire format, routing, describe): 9 passed.
+- Robot: new `smb-tests` suite (backend enable, imperative cluster+share, smbclient roundtrip via VIP, VIP-holder kill/failover/rejoin, removal) resolving under `--dryrun`; pure parsers pytest-covered.
+- Manual 3-node E2E on LXD VMs: full mgr-driven lifecycle, VIP failover in ~40s, dashboard `/api/smb` verified.
+
+## Notes for reviewers
+
+- Until the proposed snapd `smb-support` interface lands, SMB needs the snap in devmode (confined smbd is blocked on setgroups + setuid/setgid; minimal grants were proven by local profile patching and are written up for the snapd proposal).
+- AD membership (`domain` feature) is deliberately rejected in this phase; standalone user auth only.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+https://claude.ai/code/session_01RHqYMvUeUXxJTsCNdHmwYt</p>
+                Adds native SMB file sharing to MicroCeph: CephFS subvolumes served by Samba, CTDB-clustered for HA, driven end to end by the upstream `ceph smb` manager module. MicroCeph implements the mgr/smb orche ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-11</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/795">#795 OSDs on squid/stable (19.2.3) crash-loop</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># OSDs on squid/stable (19.2.3) crash-loop with `BlueFS::truncate` assert `ceph_assert(cut_off == p->length)`
+
+## Summary
+
+On a MicroCeph cluster (deployed as part of a MicroCloud) running `19.2.3+snapcf306793a4` (squid/stable), two OSDs on separate hosts became permanently unstartable. Both crash-loop on startup with an identical BlueStore/BlueFS assertion during RocksDB WAL recovery:
+
+```
+./src/os/bluestore/BlueFS.cc: 3871: FAILED ceph_assert(cut_off == p->length)
+```
+
+`ceph-bluestore-tool fsck` (read-only) completes successfully, while `repair` (read-write) aborts at the same assert. The OSDs could not be recovered in place and were rebuilt.
+
+This appears to correspond to upstream Ceph tracker #71235 [\[1\]][r1] ("Adapt BlueFS::truncate to changing allocation unit"). The upstream fix is pr#63753 [\[2\]][r2] ("os/bluestore: In BlueFS::truncate accept wierd alloc_unit"), which is listed in the changelog of the Ceph v19.2.4 (Squid) release [\[3\]][r3], described there as "the fourth backport release in the Squid series."
+
+At the time of observation, the MicroCeph `squid` track packages Ceph `19.2.3` across all published revisions; `19.2.4` (which contains pr#63753 [\[2\]][r2]) does not appear on the squid channel. This issue is filed to document the observed failure and the version details, in case it is useful for tracking snap/track alignment with upstream Squid point releases.
+
+## Environment
+
+| Field | Value |
+|---|---|
+| Snap | microceph |
+| Installed version | `19.2.3+snapcf306793a4` |
+| Installed revision | 1735 |
+| Channel | squid/stable |
+| Ceph version string | `19.2.3 (c92aebb279828e9c3c1f5d24613efca272649e62) squid (stable)` |
+| Deployment | MicroCloud (MicroCeph providing storage for MicroCloud VMs) |
+| Cluster | 6 hosts, 6 OSDs, replicated pools (size 3, min_size 2) |
+| OSD backing | Physical block devices |
+
+### Observed squid/stable channel state (store API)
+
+Query used:
+```
+curl -sH 'Snap-Device-Series: 16' \
+  'https://api.snapcraft.io/v2/snaps/info/microceph' \
+  | jq -r '.["channel-map"][] | select(.channel.name=="squid/stable") | .version, .revision'
+```
+
+Output — every published squid/stable revision reports Ceph 19.2.3:
+```
+19.2.3+snapcf306793a4 1735
+19.2.3+snapcf306793a4 1736
+19.2.3+snapcf306793a4 1737
+19.2.3+snapcf306793a4 1738
+19.2.3+snapcf306793a4 1740
+```
+
+For reference, `snap info microceph` at the time also showed `tentacle/stable` on `20.2.1` (a major version ahead of Squid) and no `19.2.4` on any squid channel.
+
+## Observed sequence
+
+1. The cluster (a 6-host MicroCloud deployment with 6 OSDs) was healthy prior to the event, with all 6 OSDs up.
+2. Two OSDs on separate hosts (`osd.3` on host A, `osd.4` on host B) went down within the same window and then failed to restart, leaving the cluster at 4 of 6 OSDs up.
+3. The direct cause of the initial outage could not be verified. There was no host reboot or power event — on the host carrying `osd.4`, `uptime -s`, `last -x`, and `journalctl --list-boots` confirm the host ran continuously across the OSD-failure window, and no crash entry was recorded (`ceph crash ls` empty). The working theory is I/O saturation: during later recovery, other OSDs (`osd.2`, `osd.5`, `osd.6`) were observed dropping under load with `bdev ... aio_submit retries` messages and returning cleanly on restart, so the same mechanism may have marked `osd.3`/`osd.4` down. This is unverified for the original event, as logs from the moment of first failure were not captured.
+4. Both failed OSDs then crash-loop on restart with the BlueFS `cut_off == p->length` assert on mount, within the RocksDB WAL recovery path, and could not be recovered in place.
+5. At the time of failure the OSDs were fairly full (~90% used) with fragmentation — the high-fill condition described in community reports of this assert [\[5\]][r5].
+6. With two OSDs down and the remaining OSDs near capacity, re-replication hit `backfill_toofull`; 16 PGs became inactive (`undersized+degraded+remapped+backfill_toofull+peered`), which blocked RBD I/O to the MicroCloud VMs until enough OSDs were brought back to activate the affected PGs.
+
+## Crash backtrace (OSD startup)
+
+```
+./src/os/bluestore/BlueFS.cc: In function 'int BlueFS::truncate(FileWriter*, uint64_t)'
+./src/os/bluestore/BlueFS.cc: 3871: FAILED ceph_assert(cut_off == p->length)
+ ceph version 19.2.3 (c92aebb279828e9c3c1f5d24613efca272649e62) squid (stable)
+ ...
+ 3: (BlueFS::truncate(BlueFS::FileWriter*, unsigned long)+0x8b7)
+ 4: (BlueRocksWritableFile::Close()+0x35)
+ 6: (rocksdb::WritableFileWriter::Close()+0x803)
+ 7: (rocksdb::BuildTable(...)+0x2a45)
+ 8: (rocksdb::DBImpl::WriteLevel0TableForRecovery(...)+0x1019)
+ 9: (rocksdb::DBImpl::RecoverLogFiles(...)+0x1db7)
+10: (rocksdb::DBImpl::Recover(...)+0x18b8)
+11: (rocksdb::DBImpl::Open(...)+0x75b)
+13: (RocksDBStore::do_open(...)+0xae5)
+14: (BlueStore::_open_db(bool, bool, bool)+0x806)
+15: (BlueStore::_open_db_and_around(bool, bool)+0x48a)
+16: (BlueStore::_mount()+0x23f)
+17: (OSD::init()+0x4e6)
+```
+
+## Diagnostic observations
+
+- `ceph-bluestore-tool fsck --path /var/lib/ceph/osd/ceph-<id>` completes successfully (RocksDB opened read-only; the failing write path is not exercised).
+- `ceph-bluestore-tool fsck --path ... --bluefs_replay_recovery=true --bluefs_replay_recovery_disable_compact=true` also completes successfully.
+- `ceph-bluestore-tool repair --path /var/lib/ceph/osd/ceph-<id>` aborts with the same `cut_off == p->length` assert. The crash is in the WAL-flush write path (`WriteLevel0TableForRecovery` → `BuildTable` → `BlueFS::truncate`).
+- Underlying disks show no hardware errors: no `dmesg` I/O errors and no SMART failures.
+
+## Impact observed
+
+Cluster-wide RBD I/O stall (MicroCloud VMs unresponsive) resulting from 16 inactive PGs. In-place recovery of the affected OSDs was not possible on 19.2.3; the data was recovered only because other OSDs retained a surviving copy of the affected PGs.
+
+## Additional notes
+
+- On 19.2.3, `ceph-bluestore-tool repair` did not resolve the condition (the upstream fix [\[2\]][r2] is a code change rather than a data repair).
+- A start-time workaround has been reported by others (reducing the BlueStore shared allocation size to 4096 so the OSD can start despite unaligned free space); it was not applied here.
+- Keeping OSD utilization well below ~75% appears to reduce the likelihood of encountering the assert on 19.2.3, based on community reports correlating it with high fill and fragmentation [\[5\]][r5].
+- A change in 19.2.3 that may be related to the regression is `os/bluestore: use block size (4K) as minimal allocation unit for dedicated DB/WAL volumes` (pr#62514), per the 19.2.3 release notes [\[4\]][r4].
+
+## References
+
+1. Ceph tracker #71235 — "Adapt BlueFS::truncate to changing allocation unit": [tracker.ceph.com/issues/71235](https://tracker.ceph.com/issues/71235)
+2. Ceph pr#63753 — "os/bluestore: In BlueFS::truncate accept wierd alloc_unit": [github.com/ceph/ceph/pull/63753](https://github.com/ceph/ceph/pull/63753)
+3. Ceph v19.2.4 (Squid) release notes (lists pr#63753): [ceph.io/en/news/blog/2026/v19-2-4-squid-released](https://ceph.io/en/news/blog/2026/v19-2-4-squid-released/)
+4. Ceph v19.2.3 (Squid) release notes: [ceph.io/en/news/blog/2025/v19-2-3-squid-released](https://ceph.io/en/news/blog/2025/v19-2-3-squid-released/)
+5. Clyso — "Critical bugs in Ceph Reef and Squid": [docs.clyso.com/blog/critical-bugs-ceph-reef-squid](https://docs.clyso.com/blog/critical-bugs-ceph-reef-squid/)
+
+
+[r1]: https://tracker.ceph.com/issues/71235
+[r2]: https://github.com/ceph/ceph/pull/63753
+[r3]: https://ceph.io/en/news/blog/2026/v19-2-4-squid-released/
+[r4]: https://ceph.io/en/news/blog/2025/v19-2-3-squid-released/
+[r5]: https://docs.clyso.com/blog/critical-bugs-ceph-reef-squid/
+
+## AI Use Disclosure
+Report drafted with AI assistance; all diagnostics are from a live cluster and independently verified.</p>
+                # OSDs on squid/stable (19.2.3) crash-loop with `BlueFS::truncate` assert `ceph_assert(cut_off == p->length)`
+
+## Summary
+
+On a MicroCeph cluster (deployed as part of a MicroCloud) running `19.2.3+sna ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-06</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/790">#790 No enforcement of Encryption in Transit, i.e. MicroCeph cluster allows plain text communication with clients</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>microceph  19.2.3+snapfd93b718e2  1701  squid/edge  canonical✓  held
+
+As you can see at:
+https://bugs.launchpad.net/snap-openstack/+bug/2159005
+
+MicroCeph side doesn't enforce secure connection to MicroCeph to encrypt data in transit. When clients connect to MicroCeph without careful consideration, the data written to Ceph RBD for example can be captured on the networking layer. MicroCeph should have a way to enforce modern and secure protocol. If the secure mode should be the default by eliminating legacy client or not requires some discussions maybe, but at least the secure enforcement mode should be there by tightening up the configs in the following page, in my opinion.
+https://docs.ceph.com/en/squid/rados/configuration/msgr2/
+
+In the meantime, the MicroCeph documentation give a false impression that encryption is used by default (it's enabled and available by default but that doesn't necessarily mean it's used always).
+
+https://documentation.ubuntu.com/canonical-microceph/latest/snap/explanation/security/attack-surface/#network-protocols-and-endpoints
+> Ceph Messenger protocol (v1/v2): Used for all internal Ceph communication (MON, OSD, MGR, MDS). Messenger v2 (default in newer Ceph versions) provides encryption capabilities for data in transit.
+
+https://documentation.ubuntu.com/canonical-microceph/latest/snap/explanation/canonical-ceph-reference-architecture/data-encryption/
+> Encryption in transit and at rest is enabled by default once Canonical Ceph is related to a Vault secrets-storage relation. Data encryption in transit is enabled via the Messenger V2 feature.
+
+
+### How to reproduce and confirm the traffic in transit.
+
+1. deploy a single node Sunbeam with control,compute,storage roles.
+2. launch a VM
+   $ sunbeam launch ubuntu --name test
+3. create and attach a volume backed by Ceph RBD, e.g.
+   $ openstack volume create --size 5 test-volume-1
+   $ openstack server add volume test test-volume-1
+4. create a filesystem on top and mount it from the guest OS
+   $ sudo mkfs.ext4 /dev/vdb
+   $ sudo mount /dev/vdb /mnt
+5. write some secret to the filesystem while capturing the network packets from/to Ceph OSDs on the host
+   $ printf 'MY_SECRET at %s\n' "$(date -Is)" | sudo tee /mnt/data.txt
+
+```bash
+$ sudo tcpdump -elnvA -i any tcp portrange 6800-7568
+```
+> 06:02:03.487182 lo In ifindex 1 00:00:00:00:00:00 ethertype IPv4 (0x0800), length 4512: (tos 0x0, ttl 64, id 4824, offset 0, flags [DF], proto TCP (6), length 4492)
+    192.168.124.21.44348 > 192.168.124.21.6804: Flags [P.], cksum 0x8afa (incorrect -> 0xfbeb), seq 406:4846, ack 258, win 48025, options [nop,nop,TS val 2229140578 ecr 2229139105], length 4440
+E.....@.@.....|...|..<....%/.8.9...........
+...b......)........................._.%AA...............*.?. ....................e..................t.........=.l{...$.@...............................................................[PGju>....................................&...rbd_data.426631b4e736.0000000000000021...".....0.............................................................?MY_SECRET at 2026-07-03T06:02:03+00:00
+
+
+^^^ MY_SECRET is visible in the network packet.
+
+
+### Host configuration out of the box
+
+```bash
+$ sudo ceph mon dump
+epoch 2
+fsid 1541217c-0e77-4a6a-84fa-7d770c83f7f7
+last_changed 2026-07-03T03:54:50.965430+0000
+created 2026-07-03T03:54:47.204285+0000
+min_mon_release 19 (squid)
+election_strategy: 1
+0: [v2:192.168.124.21:3300/0,v1:192.168.124.21:6789/0] mon.sunbeam-single-node
+dumped monmap epoch 2
+
+^^^ both msgr1 and msgr2 are enabled
+
+$ sudo ss -tlnp | grep ceph-mon
+LISTEN 0 512 192.168.124.21:6789 0.0.0.0:* users:(("ceph-mon",pid=52711,fd=28))
+LISTEN 0 512 192.168.124.21:3300 0.0.0.0:* users:(("ceph-mon",pid=52711,fd=27))
+
+^^^ both ports listens
+
+$ sudo cat /var/snap/cinder-volume/common/etc/ceph/cinder-volume-ceph.conf
+###############################################################################
+# [ WARNING ]
+# ceph configuration file maintained by the cinder-volume snap
+# local changes may be overwritten.
+###############################################################################
+[global]
+auth_supported = cephx
+mon host = 192.168.124.21
+log to syslog = true
+err to syslog = true
+clog to syslog = true
+
+[client]
+keyring = /var/snap/cinder-volume/common/etc/ceph/ceph.client.cinder-volume-ceph.keyring
+```
+^^^ no specification about msgr1 or msgr2</p>
+                microceph  19.2.3+snapfd93b718e2  1701  squid/edge  canonical✓  held
+
+As you can see at:
+https://bugs.launchpad.net/snap-openstack/+bug/2159005
+
+MicroCeph side doesn't enforce secure connection to Mic ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-07-03</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/787">#787 Not capable to set up multiple active MDS</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>If I'm not mistaken, MDS for CephFS use case is CPU-intenstive and single-threaded. That means if we only have one active MDS in the cluster, we rely on a single CPU core for the entire cluster workload.
+
+https://docs.ceph.com/en/squid/start/hardware-recommendations/#cpu
+> CephFS Metadata Servers (MDS) are CPU-intensive. They are single-threaded and perform best with CPUs with a high clock rate (GHz).
+
+In the upstream, there is a set of documentation around multiple active MDS and how to leverage it to distribute the CephFS workload across the services including how to scale out MDS using orchestrator. e.g.
+
+https://docs.ceph.com/en/squid/cephfs/multimds/
+> You should configure multiple active MDS daemons when your metadata performance is bottlenecked on the single MDS that runs by default.
+...
+> Workloads that typically benefit from a larger number of active MDS daemons are those with many clients, perhaps working on many separate directories.
+
+In MicroCeph, there is no config knob or subcommand to launch multiple MDS on a physical host so one active MDS out of 3-node cluster is the only possible configuration as far as I see. The single MDS in MicroCeph is going to be the bottleneck always.
+
+```bash
+$ snap list microceph
+Name       Version                Rev   Tracking      Publisher   Notes
+microceph  19.2.3+snapcf306793a4  1735  squid/stable  canonical✓  in-cohort
+
+
+$ sudo microceph status
+MicroCeph deployment summary:
+- mc-1 (192.168.123.165)
+  Services: mds, mgr, mon, osd
+  Disks: 1
+- mc-2 (192.168.123.191)
+  Services: mds, mgr, mon, osd
+  Disks: 1
+- mc-3 (192.168.123.201)
+  Services: mds, mgr, mon, osd
+  Disks: 1
+
+$ sudo microceph.ceph status
+  cluster:
+    id:     de9f6e99-4c9a-4a68-995b-1a7f1562dda2
+    health: HEALTH_OK
+ 
+  services:
+    mon: 3 daemons, quorum mc-1,mc-3,mc-2 (age 19m)
+    mgr: mc-1(active, since 20m), standbys: mc-3, mc-2
+    mds: 1/1 daemons up, 2 standby
+    osd: 3 osds: 3 up (since 19m), 3 in (since 19m)
+ 
+  data:
+    volumes: 1/1 healthy
+    pools:   4 pools, 97 pgs
+    objects: 30 objects, 584 KiB
+    usage:   81 MiB used, 96 GiB / 96 GiB avail
+    pgs:     97 active+clean
+ 
+$ sudo microceph.ceph fs status
+lxd_cephfs - 3 clients
+==========
+RANK  STATE   MDS      ACTIVITY     DNS    INOS   DIRS   CAPS  
+ 0    active  mc-2  Reqs:    0 /s    12     15     14      9   
+      POOL         TYPE     USED  AVAIL  
+lxd_cephfs_meta  metadata   108k  30.3G  
+lxd_cephfs_data    data       0   30.3G  
+STANDBY MDS  
+    mc-1     
+    mc-3     
+MDS version: ceph version 19.2.3 (c92aebb279828e9c3c1f5d24613efca272649e62) squid (stable)
+```</p>
+                If I'm not mistaken, MDS for CephFS use case is CPU-intenstive and single-threaded. That means if we only have one active MDS in the cluster, we rely on a single CPU core for the entire cluster worklo ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-30</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/786">#786 ci: pin docs requirements and enable dependabot version updates</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Description
+
+docs/requirements.txt declared its dependencies with no version at all, which makes the docs build non-reproducible and leaves them unmanageable by Dependabot (it only bumps an existing version constraint, it never introduces one). Pin them to their current released versions so the build is reproducible and they fall under automated updates. Existing version specifiers elsewhere (the robot test floors, the microceph-orch pyproject floors) are left unchanged.
+
+Also move the Dependabot config from the repository root, where GitHub ignores it (so it never ran), to .github/dependabot.yml, and expand it from gomod-only to also cover the Python requirements (pip), the microceph-orch uv project, and GitHub Actions, on a weekly grouped schedule.
+
+Fixes #785 
+
+## Type of change
+
+- Clean code (code refactor, test updates; does not introduce functional changes)
+
+## How has this been tested?
+
+Tested on fork:
+* https://github.com/johnramsden/microceph/pull/9
+* https://github.com/johnramsden/microceph/pull/10
+* https://github.com/johnramsden/microceph/pull/11
+* https://github.com/johnramsden/microceph/pull/12
+</p>
+                # Description
+
+docs/requirements.txt declared its dependencies with no version at all, which makes the docs build non-reproducible and leaves them unmanageable by Dependabot (it only bumps an existi ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-30</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/785">#785 Pins are not auto-updated automatically</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>We have pins for various software but we do not have a mechanism to look into if there are newer versions on a scheduled basis. Pins are nice because they avoid breakage, but if the versions are not frequently updated we can end up on out of date software.
+
+Potential fix: Add a dependabot configuration for automatically updating the relevant pins.
+
+Dependabot currently is in the wrong directory and doesnt run. </p>
+                We have pins for various software but we do not have a mechanism to look into if there are newer versions on a scheduled basis. Pins are nice because they avoid breakage, but if the versions are not f ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                    <span class="assignee">johnramsden </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                
+                <span class="date-created">2026-06-29</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/783">#783 Flaky: Adopt test with cephadm fails when the LXD VM agent never comes up</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Flaky: Adopt test with cephadm fails when the LXD VM agent never comes up
+
+Part of #773 (Reduce Flaky Tests). Data: CI Health Report #717.
+Affected job: **Tests / Adopt test with cephadm** — 10.8% over the last 60 days on `main` (largest non-doc failer).
+
+Related flaky issue (same root cause, different harness): the DSL VM-readiness flake — #<insert issue number here>.
+
+## What happens (observed behaviour)
+
+`create_cephadm_vm()` launches the VM once and waits ~200 s; when the agent never responds it `exit 1`s with no relaunch:
+
+```
+Error: LXD VM agent isn't currently running
+...
+Timeout waiting for machine
+```
+
+## Steps to reproduce
+
+Intermittent on `main`. Observed instances:
+
+- https://github.com/canonical/microceph/actions/runs/25006847909/job/73232057308
+- https://github.com/canonical/microceph/actions/runs/25122463102/job/73626737457
+- https://github.com/canonical/microceph/actions/runs/25343841361/job/74307903663
+
+## What were you expecting to happen?
+
+A VM whose agent is briefly slow should be relaunched/retried, not fail adoption setup outright.
+</p>
+                # Flaky: Adopt test with cephadm fails when the LXD VM agent never comes up
+
+Part of #773 (Reduce Flaky Tests). Data: CI Health Report #717.
+Affected job: **Tests / Adopt test with cephadm** — 10.8% o ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-26</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/782">#782 Flaky: Test maintenance mode fails on a transient lxc file push socket reset</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Flaky: Test maintenance mode fails on a transient lxc file push socket reset
+
+Part of #773 (Reduce Flaky Tests). Data: CI Health Report #717.
+Affected job: **Tests / Test maintenance mode** — 2.7% over the last 60 days on `main`.
+
+Related flaky issue (companion harness-retry fix): the snap-store outage flake — #<insert issue number here>.
+
+## What happens (observed behaviour)
+
+A single `lxc file push` during suite setup fails with a forkfile socket reset and cascades the whole suite to FAIL (6/7 tests had passed):
+
+```
+Failed to push script to node-wrk1: Error: error receiving version packet from server:
+read unix @->/proc/self/fd/22/forkfile.sock: read: connection reset by peer
+```
+
+## Steps to reproduce
+
+Intermittent on `main`. Observed instance:
+
+- https://github.com/canonical/microceph/actions/runs/27827205271/job/82354673524
+
+## What were you expecting to happen?
+
+A momentary VM-agent socket reset on `lxc file push` should be retried, not abort suite setup.
+
+
+</p>
+                # Flaky: Test maintenance mode fails on a transient lxc file push socket reset
+
+Part of #773 (Reduce Flaky Tests). Data: CI Health Report #717.
+Affected job: **Tests / Test maintenance mode** — 2.7% o ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-26</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/781">#781 Flaky: DSL functional tests fail when the LXD VM agent never comes up</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Flaky: DSL functional tests fail when the LXD VM agent never comes up
+
+Part of #773 (Reduce Flaky Tests). Data: CI Health Report #717.
+Affected job: **Tests / DSL functional tests** — 11.5% over the last 60 days on `main`.
+
+Related flaky issue (same root cause, different harness): the Adopt VM-readiness flake.
+
+## What happens (observed behaviour)
+
+An LXD VM launches (`lxc launch` returns 0) but its agent never responds within the readiness window, so the harness times out:
+
+```
+[dsl-functest] FAIL: Timed out waiting for VM '...' to be ready
+Error: LXD VM agent isn't currently running
+```
+
+The old `setup_dsl_test()` retried only `lxc launch`, so the post-launch readiness wait called `fail()` and aborted the whole case.
+
+## Steps to reproduce
+
+Intermittent on `main`. Observed instances:
+
+- https://github.com/canonical/microceph/actions/runs/27663269867/job/81811941445
+- https://github.com/canonical/microceph/actions/runs/27734216347/job/82047574030
+
+## What were you expecting to happen?
+
+A VM whose agent is briefly slow should be relaunched/retried, not fail the test case outright.
+</p>
+                # Flaky: DSL functional tests fail when the LXD VM agent never comes up
+
+Part of #773 (Reduce Flaky Tests). Data: CI Health Report #717.
+Affected job: **Tests / DSL functional tests** — 11.5% over the ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-26</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/776">#776 docs: require PRs to conform to the PR template</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Type of change
+
+- Documentation update (change to documentation only)
+</p>
+                ## Type of change
+
+- Documentation update (change to documentation only)
+   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-25</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/773">#773 Reduce Flaky Tests</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p># Master Issue for flaky test tracking
+
+Flaky test reduction issues should tag fixes: #773, then re-open it.</p>
+                # Master Issue for flaky test tracking
+
+Flaky test reduction issues should tag fixes: #773, then re-open it.   <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-25</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/771">#771 HostDown alert get triggered when having more than 4 nodes of microceph cluster</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>I have a 9 nodes microceph cluster deployed with microceph charm and added a relation with COS using opentelemetry-collector charm in between.
+
+From the alerts list, I will see 6 of HostDown alerts for microceph, with the following description.
+
+```
+Host 'localhost:9283' is down, failed to scrape. VALUE = 0 LABELS = map[__name__:up instance:localhost:9283 job:microceph_0_default juju_application:microceph juju_model:openstack-machines juju_model_uuid:4ad70035-43e0-4de3-8a6b-9d793eb9b5fe juju_unit:microceph/1]
+```
+3 are UP, and these are the unit where ceph-mgr service is running which has prometheus module, so localhost:9283 is listening there.
+However, other 6 microceph nodes doesn't have ceph-mgr service, so localhost:9283 is not listening, which is expected.
+
+I believe this HostDown alert should be only for microceph unit where ceph-mgr is running, or different rule to be valid for all microceph units. 
+</p>
+                I have a 9 nodes microceph cluster deployed with microceph charm and added a relation with COS using opentelemetry-collector charm in between.
+
+From the alerts list, I will see 6 of HostDown alerts fo ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-24</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/763">#763 dashboard module fails with "No module named 'smb'" on tentacle/stable and tentacle/edge</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Description
+The Ceph dashboard module fails to load on MicroCeph tentacle/stable and 
+tentacle/edge with:
+
+Module 'dashboard' has failed: No module named 'smb'
+
+## Environment
+Tested on both channels:
+- Channel: tentacle/stable, Revision: 1734, Ceph version: 20.2.0+snapbe4e67380e
+- Channel: tentacle/edge, Revision: 1742, Ceph version: 20.2.0+snap5c2760d8fb
+
+## Steps to reproduce
+1. Install MicroCeph on tentacle/stable or tentacle/edge channel
+2. Enable the dashboard module: microceph.ceph mgr module enable dashboard
+3. Run: microceph.ceph status
+4. Observe HEALTH_ERR: Module 'dashboard' has failed: No module named 'smb'
+
+## Root cause
+The smb module directory is completely missing from the snap:
+
+$ find /snap/microceph/1742/share/ceph/mgr/smb
+(no output - directory does not exist)
+
+$ microceph.ceph mgr module ls | grep smb
+(no output - module not present at all)
+
+The dashboard controller unconditionally imports from it:
+/snap/microceph/1742/share/ceph/mgr/dashboard/controllers/smb.py
+
+## Upstream fix
+Already merged in upstream Ceph:
+- PR: https://github.com/ceph/ceph/pull/67510 (merged May 8, 2026)
+- Tracker: https://tracker.ceph.com/issues/74268
+- Target: v20.2.2
+
+The fix has been merged for over a month but has not been included in 
+either tentacle/stable (rev 1734) or tentacle/edge (rev 1742).
+
+Please include this fix in the tentacle snap builds.
+
+## Workaround
+microceph.ceph mgr module disable dashboard</p>
+                ## Description
+The Ceph dashboard module fails to load on MicroCeph tentacle/stable and 
+tentacle/edge with:
+
+Module 'dashboard' has failed: No module named 'smb'
+
+## Environment
+Tested on both channe ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-12</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/762">#762 test: retry RBD pool disable on transient mirror health flap</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>The "Disable RBD mirror" step runs remote_disable_rbd_mirroring right
+after remote_failover_to_siteb. Failover promotes the secondary and
+triggers a resync, during which pool mirror health transiently flaps to
+WARNING. The daemon re-validates pool health on every non-forced
+pool-level disable (replication_rbd.go: "pool replication status not
+OK"), so a disable issued during that window exits 1 and fails the step.
+
+PR #696 added a single up-front remote_wait_for_rbd_mirror_health call,
+but that is a TOCTOU check: health can flap back after the wait, and each
+disable perturbs health, so the one-shot wait cannot cover the
+per-operation re-validation.
+
+Add rbd_disable_retry_transient_health, which retries a pool disable only
+while it is rejected with "status not OK", and route the three
+pool-level disables through it. It returns immediately on success or on
+any other outcome, so the negative test still observes the expected "in
+Image mirroring mode" guard. Image-level disables are not health gated
+and are left unchanged.
+
+Assisted-by: hermes:claude-opus-4.8
+</p>
+                The "Disable RBD mirror" step runs remote_disable_rbd_mirroring right
+after remote_failover_to_siteb. Failover promotes the secondary and
+triggers a resync, during which pool mirror health transient ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-11</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/757">#757 feat: Add migration branch for quincy</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>No description provided.</p>
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-04</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/756">#756 feat: Add migration branch for reef</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>No description provided.</p>
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-04</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/755">#755 feat: Add migration branch for squid</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>No description provided.</p>
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-04</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/754">#754 Make the cluster-join "Ready dqlite" timeout configurable (joins fail when the dqlite DB is large)</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p> ### Summary
+  
+  `microceph cluster join` fails with `Error: Failed to join cluster: Ready dqlite: context deadline exceeded` on clusters whose microcluster **dqlite database has grown large**. The joining node cannot download + replay the dqlite state and reach "ready" within the framework's **hardcoded** ready timeout, so the join times out and rolls back.
+  
+  **Request:** expose a way to **increase the join/ready timeout** (CLI flag, env var, or config) for clusters with a large dqlite DB and/or slow disks — and, ideally, also let operators **bound the DB size** via dqlite snapshot params (see "Related" below).
+  
+  ### Environment
+      
+  - MicroCeph **19.2.3** (snap rev **1701**, `squid/stable`), Ceph 19.2.3 Squid
+  - Ubuntu 24.04, kernel 6.8
+  - Existing 3-node cluster (mon+osd), adding a **4th** storage node
+  - 1 GbE management network; OSDs on SATA SSDs
+
+  ### What happens
+
+  On the joining node:
+
+      $ sudo microceph cluster join <token> --microceph-ip <addr> 
+      Error: Failed to join cluster: Ready dqlite: context deadline exceeded
+
+  Joining-node daemon log (`snap.microceph.daemon`): `PreInit` → ~31s of silence → `PreRemove (force=true)` (rollback).
+
+  Leader-side daemon log during the attempt:
+  
+      level=error msg="Received error sending heartbeat to cluster member"
+        error="Database is still starting" target="<joiner>:7443"
+      level=warning msg="Failed to get status of cluster member ... /core/1.0/ready ... connect: connection refused"
+
+  The joiner's dqlite never finishes starting within the window.
+  
+  ### Root cause
+         
+  The microcluster **dqlite DB is ~126 MB** on every member (raft log segments):
+           
+      $ sudo du -sh /var/snap/microceph/common/state/database/
+      126M    .../database/
+      # ~25 raft segment files of 4–8 MB each (open-* and <index>-<index>)
+  
+  On join, the new member must receive + apply this state and reach "ready" within a **hardcoded** deadline:
+  
+  - `microcluster/internal/db/db.go` wraps the ready-wait in a fixed `context.WithTimeout(...)` (currently `120*time.Second` on `main`; the version vendored in MicroCeph 19.2.3 behaves as ~30s in our testing — PreInit→rollback in ~31s). There is **no flag/env/config** to change it.
+
+  The DB is large because microcluster never sets dqlite snapshot params:
+  
+  - `microcluster/internal/db/dqlite.go` — both `dqlite.New(...)` calls omit `WithSnapshotParams`, so go-dqlite defaults apply (`threshold=1024`, `trailing=8192`). Canonical's own k8s-dqlite docs call these defaults ["too large for small clusters"](https://documentation.ubuntu.com/canonical-kubernetes/release-1.32/snap/reference/troubleshooting/). MicroCeph writes large config/OSD entries to raft, so 8192 trailing
+  entries ≈ 126 MB.
+  
+  ### Why there's no workaround today
+
+  - The join/ready timeout is a compiled-in constant — not exposed on `microceph cluster join` (`--help` has only `--microceph-ip`, `--debug`, `--verbose`, `--state-dir`), not in `ceph config`, not env-driven.
+  - The dqlite trailing window is not exposed either (no `WithSnapshotParams`, no `tuning.yaml`).
+  - Result: a cluster with a legitimately large dqlite DB can never add a node, with no operator-facing remedy.
+  
+  ### Request
+  
+  1. **Make the join/ready timeout configurable** — e.g. `microceph cluster join --timeout`, a daemon config key, or an env var — so large-DB / slow-disk joins can complete.
+  2. **(Complementary) expose dqlite snapshot params** (threshold/trailing) so operators can bound the DB size, the same way k8s-dqlite already does via `tuning.yaml`:
+
+         snapshot:
+           trailing: 1024
+           threshold: 512
+
+     (Note k8s-dqlite's caveat: set **both** — setting `trailing` alone forces `threshold=0`, snapshotting every transaction.)
+
+  ### Related / precedent
+  
+  - k8s-dqlite solved the DB-size side via `tuning.yaml` (link above).
+  - canonical/microceph #476, #444, #473 (node-join failures) — same `Ready dqlite: context deadline exceeded` symptom; PR #710 fixed an address-selection variant but not the large-DB/timeout case.</p>
+                 ### Summary
+  
+  `microceph cluster join` fails with `Error: Failed to join cluster: Ready dqlite: context deadline exceeded` on clusters whose microcluster **dqlite database has grown large**. The j ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-03</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/752">#752 feat: Configure docs for migration to canonical.com (add migration branch for main)</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>No description provided.</p>
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-06-02</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/751">#751 fix: support local tentacle dashboard build</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+- add the dashboard crypto patch file used by local tentacle builds
+- switch the snap build to `go mod download`
+- relax the local-build-only snapcraft path so patched local builds can complete
+
+## Why
+We need tentacle for dashboard OAuth2 support, and the local snap build path needs to reliably produce a patched artifact for cluster bring-up.</p>
+                ## Summary
+- add the dashboard crypto patch file used by local tentacle builds
+- switch the snap build to `go mod download`
+- relax the local-build-only snapcraft path so patched local builds can comp ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-29</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/747">#747 snap: build ceph source from ceph-tentacle-rc PPA</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+- Switch `package-repositories` in `snap/snapcraft.yaml` from `ppa:lmlogiudice/ceph-tentacle-noble` to `ppa:lmlogiudice/ceph-tentacle-rc` so the snap builds against Tentacle release-candidate Ceph packages.
+
+## PPA arch coverage
+Verified via Launchpad API (`getPublishedBinaries?binary_name=ceph-common&status=Published`) that `ceph-tentacle-rc` publishes `ceph-common` for:
+- **noble**: amd64, arm64, armhf, ppc64el, riscv64, s390x, i386
+- **resolute**: amd64, amd64v3, arm64, armhf, ppc64el, riscv64, s390x, i386
+
+This matches (and on resolute extends) the previous `ceph-tentacle-noble` PPA arch set, so existing snap build targets remain covered. The snap base is `core24` (noble), which is where stage-packages are resolved.
+
+## Test plan
+- [ ] CI `Build microceph snap` job succeeds against the new PPA
+- [ ] DSL + cluster functional tests pass on the resulting snap
+- [ ] Resulting snap reports a Tentacle RC `ceph-version` in `metadata.yaml`
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)</p>
+                ## Summary
+- Switch `package-repositories` in `snap/snapcraft.yaml` from `ppa:lmlogiudice/ceph-tentacle-noble` to `ppa:lmlogiudice/ceph-tentacle-rc` so the snap builds against Tentacle release-candida ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-28</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/pull/746">#746 fix(cephfs): stabilise volume replication disable</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+The CephFS volume-level disable (`microceph replication disable cephfs --volume X --force`) periodically tripped the 120s client deadline in CI (e.g. [run 26505076454 job 78056192583](https://github.com/canonical/microceph/actions/runs/26505076454/job/78056192583)):
+
+```
+Error: failed to process disable_replication request for cephfs:
+Delete "http://control.socket/1.0/ops/replication/cephfs/vol": context deadline exceeded
+```
+
+Two missing pieces vs. the RBD path:
+- Each per-path `ceph fs snapshot mirror remove` blocks until the cephfs-mirror daemon ACKs the removal. With four paths and an in-flight sync, the loop can exceed the client deadline.
+- The CephFS disable path had **no** retries, while the RBD pool disable (`microceph/ceph/rbd_mirror.go:213`) does.
+
+## Changes
+
+- **`microceph/ceph/replication_cephfs.go`**
+  - `cephFSWaitForMirrorPathsIdle`: pre-flight check that polls every peer's per-path status (12 × 5s linear backoff). Returns `mirror path not stable: <path>` naming the offending path if any path stays non-idle, instead of a generic timeout.
+  - `disableCephFSVolumeMirror`: wraps `cephFSSnapshotMirrorRemovePath` in `retry.Retry` (10 × 5s linear), mirroring the RBD pattern.
+  - `buildPeerStatusFetchers`: resolves `volumeID + peers + admin socket` once in `DisableHandler` and returns one closure per peer; keeps the pre-wait testable.
+- **`microceph/cmd/microceph/replication_disable_cephfs.go`**: prints an early `Checking mirror path stability before disabling replication; this may take up to a minute...` notice on volume-level force disable so the operator does not perceive the up-to-60s wait as a hang. Gated on `--force` + no `--subvolume` + no `--dir-path` so subvolume/directory disables (which don't pre-wait) stay silent.
+- **`microceph/ceph/replication_cephfs_test.go`**: 7 unit tests covering all-idle, never-stabilises, missing-path, late-stabilise, fetcher-error, multi-peer-one-non-idle, and empty-input cases. Test temporarily shrinks the attempt count + backoff so the suite stays fast.
+- **`.github/workflows/tests.yml`**: adds an `if: failure()` log-dump step to the `cephfs-replication-test` job (snap logs, cephfs-mirror logs, `ceph -s`, `fs snapshot mirror daemon status`, `replication status`, `ceph.conf` per node) so the next flake leaves the evidence needed to identify which `ceph` invocation actually hangs.
+
+## Test plan
+
+- [x] `go build ./...` clean
+- [x] `go vet ./ceph/...` clean
+- [x] `go test ./ceph/... -run TestCephFSWait -v` — 7/7 pass
+- [x] `go test ./...` — all packages pass
+- [ ] CI run on this branch with the cephfs-replication-test job passing
+- [ ] (If a future flake occurs) verify the new log-dump artifact captures the slow ceph invocation
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)</p>
+                ## Summary
+
+The CephFS volume-level disable (`microceph replication disable cephfs --volume X --force`) periodically tripped the 120s client deadline in CI (e.g. [run 26505076454 job 78056192583](http ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-28</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            <div class="issue-card">
+                <h2><a href="https://github.com/canonical/microceph/issues/743">#743 Tracking: Ceph Mgr orchestrator module (microceph-orch)</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+            </div>
+
+            <div class="issue-description">
+                
+                <p>## Summary
+
+Tracking issue for MicroCeph's native Ceph Mgr orchestrator module (`microceph-orch`). The module exposes MicroCeph as a Ceph orchestrator backend so operators can manage MicroCeph clusters with standard `ceph orch ...` commands (apply / rm / restart / ps / ls / device ls / host ls).
+
+Architecture: the Python module loads inside `ceph-mgr` (same snap as `microcephd`), talks to MicroCeph's unix socket via `requests_unixsocket`, and uses microcluster's server-side `proxyTarget` middleware (`?target=<member>` query) to mTLS-forward per-host operations. No external HTTPS connectivity, certs, or extra config required from operators.
+
+## Goals
+
+- Provide a working `microceph` backend selectable via `ceph orch set backend microceph`.
+- Per-host targeting for apply / rm / restart from the local unix socket.
+- Idempotent apply semantics; failures raise rather than partial-success-as-success.
+- Clear errors for unsupported operations (e.g. dotted names on services that don't take a `service_id`, restart of unsupported service types).
+- Documentation: how-to (`use-ceph-orch.rst`), explanation (`ceph-orch-backend.rst`), architecture paragraph, release notes.
+
+## Scope (initial set of supported verbs)
+
+| Verb       | Services |
+|------------|----------|
+| `apply`    | mon, mgr, mds, rgw, nfs, rbd-mirror, cephfs-mirror |
+| `rm`       | all of above; NFS requires `nfs.<cluster_id>` |
+| `restart`  | osd, mon, rgw (backend `serviceWorkerTable` limitation) |
+| `ps`       | all services (per-host, per-type filtering) |
+| `ls`       | service summaries |
+| `device ls`| OSD-backing disks |
+| `host ls`  | cluster members |
+
+## Known limitations
+
+- Single bare instance per node — no realms (RGW), no per-filesystem MDS, no rbd-mirror sharding. Dotted names raise `ValueError` on non-NFS services.
+- `restart` limited to osd / mon / rgw (backend `serviceWorkerTable` in `microceph/ceph/services.go`).
+- `orch device ls` reports only OSD-backing disks; free-disk discovery via the orch path is not supported.
+- Host labels not supported (`NotImplementedError`).
+- RGW SSL not configurable through `ceph orch apply rgw` (the Ceph `RGWSpec` has no private-key field). Use native `microceph enable rgw --ssl-certificate ... --ssl-private-key ...`.
+
+## Child PRs
+
+- #721 — feat: ceph mgr orchestrator module (first cut + per-host targeting + Sabaini review fixes)
+- #741 — test: fix flaky multi-node Test crush rules step (incidental, unblocks orch multinode CI)
+- Future: documentation PR (P0 `use-ceph-orch.rst`, P1 `ceph-orch-backend.rst`, release notes, wordlist)
+
+## Follow-ups
+
+- Add `?target=`-driven free-disk discovery so `orch device ls` can report unallocated disks across hosts.
+- Pre-validate placement hosts against `get_cluster_members()` for clearer errors on typo vs opaque microcluster proxy errors.
+- Real-mgr verification of `RemoteException` propagation through Ceph's `handle_orch_error` decorator (unit tests cover the stub only).
+- Multi-fs MDS support (requires backend changes in `microceph/ceph/`).
+- RGW realm support (requires backend changes; currently `service_id` rejected).</p>
+                ## Summary
+
+Tracking issue for MicroCeph's native Ceph Mgr orchestrator module (`microceph-orch`). The module exposes MicroCeph as a Ceph orchestrator backend so operators can manage MicroCeph cluster ...  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                
+            </div>
+
+            <div class="issue-meta">
+                
+                <span class="date-created">2026-05-27</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+            </div>
+            
+            </main>
+        </body>
+</html>
