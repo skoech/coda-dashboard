@@ -1,0 +1,16 @@
+# Virtual environment
+venv/
+
+# Python bytecode/cache
+__pycache__/ # Bytecode folder for modern Python versions (3.2+)
+*.py[cod] # Old-style bytecode files (.pyc, .pyo, .pyd) that might appear next to source files
+
+# IDE settings
+.vscode/ # VSCode settings folder
+.idea/ # JetBrains IDEs (PyCharm, IntelliJ, etc.)
+*.swp # Swap files created by some editors (e.g., Vim)
+*.swo # Swap files created by some editors (e.g., Vim)
+*.~   # Temporary/backup files created by many editors (e.g., Emacs)
+
+# Secrets
+.env # Environment variable file for storing sensitive information like API keys
