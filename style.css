@@ -1,0 +1,57 @@
+/* Stylesheet for the CODA dashboard */
+
+/* Global resets */ /* Removes all browser default spacing to allow control over spacing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles */ /* Defines default styles for common elements */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    border-bottom: 3px solid #e95420;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #111;
+    margin-bottom: 5px;
+} 
+
+header p {
+    color: #666;
+    font-size: 1.2em;
+}
+
+header p.issue-count {
+    color: #e95420;
+    font-weight: bold;
+}
+
+/* Issue cards */ /* Styles for the issue cards displayed, with shadow and hover effects*/
+.issue-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow*/
+    transition: box-shadow 0.3s ease-in-out; /* Smooth shadow transition on hover*/
+}
+
+.issue-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for depth effect (card lift)*/
+}
