@@ -26,10 +26,11 @@
                 <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
             </div>
 
+            <!--Show issue description-->
+
             <div class="issue-description">
                 {% if issue.body %}
-                <p>{{ issue.body }}</p>
-                {{ issue.body[:200] }} {% if issue.body|length > 200 %}...{% endif %}  <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->
+                <p>{{ issue.body[:200] }} {% if issue.body|length > 200 %}...</p>{% endif %} <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->  
                 {% else %}
                 <p>No description provided.</p>
                 {% endif %}
