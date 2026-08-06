@@ -37,9 +37,9 @@
 
             <div class="issue-meta">
                 {% if issue.assignee %}
-                    <span class="assignee">{{issue.assignee.login}} </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                    <span class="assignee">👤 {{issue.assignee.login}} </span>    <!--Nested expression to show the assignee's login name (username?)-->
                 {% endif %}
-                <span class="date-created">{{issue.created_at[:10]}}</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+                <span class="date-created">📅 {{issue.created_at[:10]}}</span></div> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
             </div>
             {% endfor %}
             </main>

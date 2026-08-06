@@ -4,7 +4,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Makes padding count as part of width, which makes it easier to size things */
+
 }
 
 /* Base styles */ /* Defines default styles for common elements */
@@ -54,4 +55,47 @@ header p.issue-count {
 
 .issue-card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for depth effect (card lift)*/
+}
+
+.issue-card h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.issue-card h2 a {
+    color: #06c;
+    text-decoration: none; /* Removes underline from links */
+}
+
+.issue-card h2 a:hover {
+    text-decoration: underline;
+    color: #24598f; /* Darker blue on hover for better visibility */
+}
+
+/* Issue description */
+.issue-description {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+}
+
+.issue-description p {
+    margin-bottom: 5px;
+}
+
+/* Issue metadata */ /* Assignee & date created - displayed inline */
+.issue-meta {
+    display: flex; /* Flexbox layout - items side by side */
+    flex-wrap: wrap; /* Wrap/break to the next line, if needed - allows wrapping on smaller screens */
+    gap: 15px; /* Space between items */
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.issue-meta span {
+    display: inline-flex; /* Inline but with flex capabilities */
+    align-items: center; /* Vertically center icon and text */
+    gap: 4px; /* Space between icon and text */
 }
