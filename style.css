@@ -63,13 +63,13 @@ header p.issue-count {
 }
 
 .issue-card h2 a {
-    color: #06c;
+    color: #333;
     text-decoration: none; /* Removes underline from links */
 }
 
 .issue-card h2 a:hover {
     text-decoration: underline;
-    color: #24598f; /* Darker blue on hover for better visibility */
+    color: #666; /* grey on hover for better visibility */
 }
 
 /* Issue description */
@@ -98,4 +98,10 @@ header p.issue-count {
     display: inline-flex; /* Inline but with flex capabilities */
     align-items: center; /* Vertically center icon and text */
     gap: 4px; /* Space between icon and text */
+}
+
+.issue-meta .assignee-emoji::before {
+    content: "👤";
+    color: transparent; /* Hide the default bitmap emoji color */
+    text-shadow: 0 0 0 #e95420; /* Apply a solid Ubuntu orange color clone on top of it */
 }
