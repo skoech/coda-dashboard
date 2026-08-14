@@ -36,7 +36,7 @@ jobs:
 
         # Build the dashboard
         - name: Build dashboard
-          run: python build_dashboard.py
+          run: python build_frontend.py
 
         # Upload the built dashboard as an artifact (packages dashboard files for deployment)
         - name: Upload page artifact
