@@ -17,3 +17,4 @@ __pycache__/ # Bytecode folder for modern Python versions (3.2+)
 
 # Generated files
 index.html # Generated HTML file for the dashboard
+issues.json # Generated JSON file for issues

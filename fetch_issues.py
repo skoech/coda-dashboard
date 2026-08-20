@@ -39,12 +39,21 @@ def fetch_issues(owner, repo, labels=None, state='open'):
     Returns:
         A list of dictionaries, with each dictionary representing an issue from a repository
     """
+
+    # Build the query parameters for the API request
+    params = {}
+    params['state'] = state
+
+    if labels:
+        # GitHub API expects comma-separated labels for AND logic
+        params['labels'] = ','.join(labels) # Join the list of labels into a comma-separated string
+
     # Define the URL for fetching issues from the GitHub API
     url = f"https://api.github.com/repos/{owner}/{repo}/issues"
     # Make the GET request to the GitHub API to fetch issues
     # Script will use the requests library to send an HTTP GET request to the specified URL,
     # wait for the response, and store it in the variable 'response'.
-    response = requests.get(url)
+    response = requests.get(url, params=params)
 
     if response.status_code == 200:
         issues = response.json() # Parse the JSON response into a Python list of dictionaries
@@ -79,9 +88,10 @@ def main():
     for repo_config in config['repositories']: # Loop through each repository configuration in the 'repositories' list from the config dictionary
         owner = repo_config['owner'] # Get the repository owner from the current repository config
         repo = repo_config['repo'] # Get the repository name from the current repository config
+        labels = repo_config.get('labels') # Returns list of labels or none
 
         print(f"Fetching issues from {owner}/{repo}") # Print a  message saying which repository is being processed
-        issues = fetch_issues(owner, repo) # Call the function to fetch issues from the GitHub API; save the returned list of issues in the variable 'issues'
+        issues = fetch_issues(owner, repo, labels=labels) # Call the function to fetch issues from the GitHub API; save the returned list of issues in the variable 'issues'
 
         # Create an empty array to store all issues from all repositories in memory (Don't write to JSON file until all issues have been fetched). Uses the extend() method. Builds up memory as the loop runs, and then writes once at the end of the loop. This is more efficient than writing to the JSON file after each repository is processed. Initially, I had the "save_to_json" function call inside the loop, which would write to the JSON file after each repository is processed. This was inefficient because of the multuple writes to disk; say we had 100 repos, that would mean 100 disk writes instead of one, which would be bad for performance.
         all_issues.extend(issues) # Add the fetched issues to the 'all_issues' array using the extend() method (adds each issue in the 'issues' list to the 'all_issues' list/collection)
