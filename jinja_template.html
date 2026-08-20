@@ -58,9 +58,8 @@
             {% for issue in issues %}
             <div class="issue-card">
                 <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
-            </div>
 
-            <!--Display issue tags (project + label)-->
+                <!--Display issue tags (project + label)-->
                 <div class="issue-tags">
                     <span class="project-tag">
                         {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
@@ -73,21 +72,22 @@
                     {% endfor %}
                 </div>
 
-            <!--Show issue description-->
+                <!--Show issue description-->
 
-            <div class="issue-description">
+                <div class="issue-description">
                 {% if issue.body %}
                 <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...</p>{% endif %} <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->  
                 {% else %}
                 <p>No description provided.</p>
                 {% endif %}
-            </div>
+                </div>
 
-            <div class="issue-meta">
+                <div class="issue-meta">
                 {% if issue.assignee %}
                     <span class="assignee"><span class="assignee-emoji"></span> Assignee: {{issue.assignee.login}} </span>    <!--Nested expression to show the assignee's login name (username?)-->
                 {% endif %}
                 <span class="date-created"><span class="date-emoji">📅</span> Date created: {{issue.created_at[:10]}}</span> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+                </div>
             </div>
             {% endfor %}
             </main>
