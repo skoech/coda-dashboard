@@ -19,6 +19,40 @@
                 {% endif %}
             </header>
 
+            <!--Add filters-->
+            <nav class="filters">
+                <div class="filter-by">
+                    <label for="project">Project:</label>
+                    <select name="project-filter" id="project">
+                        <option value="all">All projects</option>
+                        {% for repo in repos %}
+                        <option value="{{ repo }}">{{ repo }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-by">
+                    <label for="label">Label:</label>
+                    <select name="label-filter" id="label">
+                        <option value="all">All labels</option>
+                        {% for label in labels %}
+                        <option value="{{ label }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-by">
+                    <label for="assignment">Assignment:</label>
+                    <select name="assignment-filter" id="assignment">
+                        <option value="all">All</option>
+                        <option value="assigned">Assigned</option>
+                        <option value="unassigned">Unassigned</option>
+                    </select>
+                </div>
+                
+                <button id="clear-filters">Clear filters</button>
+            </nav>
+
             <main>
             <!--Loop through every issue and print the number, title, description and meta info, e.g. assignee and date created.-->
             {% for issue in issues %}
