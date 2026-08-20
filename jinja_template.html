@@ -49,7 +49,7 @@
                         <option value="unassigned">Unassigned</option>
                     </select>
                 </div>
-                
+
                 <button id="clear-filters">Clear filters</button>
             </nav>
 
@@ -59,6 +59,19 @@
             <div class="issue-card">
                 <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
             </div>
+
+            <!--Display issue tags (project + label)-->
+                <div class="issue-tags">
+                    <span class="project-tag">
+                        {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
+                    </span>
+
+                    {% for label in issue.labels %}
+                    <span class="label-tag">
+                        {{ label.name }} <!--Jinja expression to show the label name-->
+                    </span>
+                    {% endfor %}
+                </div>
 
             <!--Show issue description-->
 
