@@ -30,7 +30,7 @@
 
             <div class="issue-description">
                 {% if issue.body %}
-                <p>{{ issue.body[:200] }} {% if issue.body|length > 200 %}...</p>{% endif %} <!--Jinja expression to show the first 200 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->  
+                <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...</p>{% endif %} <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->  
                 {% else %}
                 <p>No description provided.</p>
                 {% endif %}
