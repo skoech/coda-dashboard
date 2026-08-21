@@ -22,7 +22,7 @@
             <!--Add filters-->
             <nav class="filters">
                 <div class="filter-by">
-                    <label for="project">Project:</label>
+                    <label for="project"></label>
                     <select name="project-filter" id="project">
                         <option value="all">All projects</option>
                         {% for repo in repos %}
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="filter-by">
-                    <label for="label">Label:</label>
+                    <label for="label"></label>
                     <select name="label-filter" id="label">
                         <option value="all">All labels</option>
                         {% for label in labels %}
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="filter-by">
-                    <label for="assignment">Assignment:</label>
+                    <label for="assignment"></label>
                     <select name="assignment-filter" id="assignment">
                         <option value="all">All</option>
                         <option value="assigned">Assigned</option>
@@ -59,34 +59,37 @@
             <div class="issue-card">
                 <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
 
-                <!--Display issue tags (project + label)-->
+                <!--Display project tag-->
                 <div class="issue-tags">
                     <span class="project-tag">
                         {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
                     </span>
-
-                    {% for label in issue.labels %}
-                    <span class="label-tag">
-                        {{ label.name }} <!--Jinja expression to show the label name-->
-                    </span>
-                    {% endfor %}
                 </div>
+
+                <!--Show issue meta information (assignee)-->
+                <div class="issue-meta">
+                {% if issue.assignee %}
+                    <span class="assignee"><span class="assignee-emoji"></span> Assignee: {{issue.assignee.login}} </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                {% endif %}
+                </div>               
 
                 <!--Show issue description-->
 
                 <div class="issue-description">
                 {% if issue.body %}
-                <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...</p>{% endif %} <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string-->  
+                <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...</p>{% endif %} <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string. [:500] is a slicing operation that extracts only the first 500 chars-->  
                 {% else %}
                 <p>No description provided.</p>
                 {% endif %}
                 </div>
 
-                <div class="issue-meta">
-                {% if issue.assignee %}
-                    <span class="assignee"><span class="assignee-emoji"></span> Assignee: {{issue.assignee.login}} </span>    <!--Nested expression to show the assignee's login name (username?)-->
-                {% endif %}
-                <span class="date-created"><span class="date-emoji">📅</span> Date created: {{issue.created_at[:10]}}</span> <!--Shows date issue was created in YYYY-MM-DD format [:10] is a slicing operation that extracts only the first 10 characters-->
+                <!--Display label tags-->
+                <div>
+                    {% for label in issue.labels %}
+                    <span class="label-tag">
+                        {{ label.name }} <!--Jinja expression to show the label name-->
+                    </span>
+                    {% endfor %}
                 </div>
             </div>
             {% endfor %}
