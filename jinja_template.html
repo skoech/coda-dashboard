@@ -28,15 +28,15 @@
         </div>
         </header>
 
-        <div class="row--25-75">
-        <div class="col">
+        <div>
             <h1>{{ title }}</h1> <!--Replace title with a Jinja variable/expression (prints a value)-->
-            <p>Total open issues: <span class="issue-count">{{ issue_count }}</span></p> <!--Jinja expression to show number of issues passed from the build script-->
-            <!--Add conditionals.-->
+            <div class="p-chip">
+                <span class="p-chip__lead">Total open issues:&nbsp</span>
+                <span id="issue-count" class="p-chip__value">{{ issue_count }}</span> <!--Jinja expression to show number of issues passed from the build script-->
+            </div>
             {% if issue_count == 0 %}
                 <p>There are no open issues.</p> <!--Jinja conditional to show a message if there are no issues-->
             {% endif %}
-        </div>
         </div>
          <!--   <header>
                 <h1>{{ title }}</h1>    
