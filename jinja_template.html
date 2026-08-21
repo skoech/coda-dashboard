@@ -7,23 +7,49 @@
         <title>CODA dashboard</title>
         <!--Ubuntu font from Google Fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
-        <link rel="stylesheet" href="vanilla-framework.css">
         <!--custom CSS overrides-->
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="vanilla-framework.css">
     </head>
         <body>
-            <header>
-                <h1>{{ title }}</h1>    <!--Replace title with a Jinja variable/expression (prints a value)-->
+
+        <header id="navigation" class="p-navigation is-dark">
+        <div class="p-navigation__row--25-75">
+            <div class="p-navigation__banner">
+            <div class="p-navigation__tagged-logo">
+                <a class="p-navigation__link" href="#">
+                <div class="p-navigation__logo-tag">
+                    <img class="p-navigation__logo-icon" src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="">
+                </div>
+                <span class="p-navigation__logo-title">Canonical</span>
+                </a>
+            </div>
+            </div>
+        </div>
+        </header>
+
+        <div class="row--25-75">
+        <div class="col">
+            <h1>{{ title }}</h1> <!--Replace title with a Jinja variable/expression (prints a value)-->
+            <p>Total open issues: <span class="issue-count">{{ issue_count }}</span></p> <!--Jinja expression to show number of issues passed from the build script-->
+            <!--Add conditionals.-->
+            {% if issue_count == 0 %}
+                <p>There are no open issues.</p> <!--Jinja conditional to show a message if there are no issues-->
+            {% endif %}
+        </div>
+        </div>
+         <!--   <header>
+                <h1>{{ title }}</h1>    
                 <p>Total open issues: <span class="issue-count">{{ issue_count }}</span></p> <!--Jinja expression to show number of issues passed from the build script-->
                 <!--Add conditionals.-->
-                {% if issue_count == 0 %}
+                <!--{% if issue_count == 0 %}
                     <p>There are no open issues.</p> <!--Jinja conditional to show a message if there are no issues-->
-                {% endif %}
-            </header>
+               <!-- {% endif %}
+            </header> _-->
 
             <!--Add filters-->
-            <nav class="filters">
-                <div class="filter-by">
+            <nav class="p-form--inline">
+                <div class="p-form__group" class="p-form__control">
                     <label for="project"></label>
                     <select name="project-filter" id="project">
                         <option value="all">All projects</option>
@@ -33,7 +59,7 @@
                     </select>
                 </div>
 
-                <div class="filter-by">
+                <div class="p-form__group" class="p-form__control">
                     <label for="label"></label>
                     <select name="label-filter" id="label">
                         <option value="all">All labels</option>
@@ -43,7 +69,7 @@
                     </select>
                 </div>
 
-                <div class="filter-by">
+                <div class="p-form__group" class="p-form__control">
                     <label for="assignment"></label>
                     <select name="assignment-filter" id="assignment">
                         <option value="all">Status</option>
@@ -52,14 +78,18 @@
                     </select>
                 </div>
 
-                <button id="clear-filters">Clear filters</button>
+                <div class="p-form__group">
+                    <label for="clear-filters">&nbsp;</label>
+                    <button id="clear-filters" class="p-button-neutral">Clear filters</button>
+                </div>
+                
             </nav>
 
             <main>
             <!--Loop through every issue and print the number, title, description and meta info, e.g. assignee and date created.-->
             {% for issue in issues %}
-            <div class="issue-card">
-                <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+                <div class="issue-card">
+                    <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
 
                 <!--Display project tag-->
                 <div class="issue-tags">
@@ -83,10 +113,13 @@
 
                 <div class="issue-description">
                 {% if issue.body %}
-                <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...</p>{% endif %} <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string. [:500] is a slicing operation that extracts only the first 500 chars-->  
+                <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...{% endif %}</p> <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string. [:500] is a slicing operation that extracts only the first 500 chars-->
                 {% else %}
                 <p>No description provided.</p>
                 {% endif %}
+
+                <!--Vanilla CTA block - read more-->
+                 <a href="{{ issue.html_url }}" class="p-cta-block">Read more ›</a>                   
                 </div>
 
                 <!--Display label tags-->

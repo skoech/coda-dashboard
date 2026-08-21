@@ -15,13 +15,18 @@
         // Add data attributes to each issue card for filtering
         issueCards.forEach(function(card) {
             // Get project tag
-            const projectTag = card.querySelector('.project-tag');
+            const projectTag = card.querySelector('.p-chip--caution .p-chip__value');
               if (projectTag) {
                 card.dataset.project = projectTag.textContent.trim(); // Create a data-project attribute on the card HTML element
               }
+              console.log('Card data:', {
+                project: card.dataset.project,
+                labels: card.dataset.labels,
+                assigned: card.dataset.assigned
+              });
 
             // Get label tags
-            const labelTags = card.querySelectorAll('.label-tag');
+            const labelTags = card.querySelectorAll('.p-chip .p-chip__value');
             const labels = [];
             labelTags.forEach(function(tag) { // Loop through each label tag
                 labels.push(tag.textContent.trim()); // Store label text in the array
@@ -29,7 +34,7 @@
             card.dataset.labels = labels.join(','); // Create a data-labels attribute and store all labels as a comma-separated string
 
             // Check if assigned
-            const assigned = card.querySelector('.assignee');
+            const assigned = card.querySelector('.p-chip--positive');
             if  (assigned) {
                 card.dataset.assigned = 'true'; // Create a data-assigned attribute and set it to true if assigned
             } else {
@@ -53,7 +58,7 @@
 
                 // Check project filter
                 if (selectedProject !== 'all') {
-                    if (card.dataset.project !== selectedProject) {
+                    if (card.dataset.project.trim() !== selectedProject) {
                         showCard = false; // If the card's project doesn't match the selected project, hide it
                     }
                 }
