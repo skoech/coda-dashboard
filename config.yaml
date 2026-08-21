@@ -20,3 +20,34 @@ repositories:
       name: Sharon Koech
       github: skoech
     contributor guide: https://documentation.ubuntu.com/microceph/stable/contributing/
+
+  - owner: canonical
+    repo: open-documentation-academy
+    labels:
+      - coda
+    maintainer(s):
+      - name: Graham Morrison
+        github: degville
+      - name: Sophie Pages
+        github: sophiepages
+      - name: Sharon Koech
+        github: skoech
+    contributor guide: 
+
+  - owner: canonical
+    repo: chisel-docs
+    labels:
+      - edit
+    maintainer(s):
+      name: Anna Sancho Vaquer
+      github: asanvag
+    contributor guide: 
+
+  - owner: canonical
+    repo: rockcraft
+    labels:
+      - edit
+    maintainer(s):
+      name: Anna Sancho Vaquer
+      github: asanvag
+    contributor guide:
