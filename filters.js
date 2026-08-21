@@ -9,7 +9,7 @@
         const labelFilter = document.getElementById('label');
         const assignmentFilter = document.getElementById('assignment');
         const clearButton = document.getElementById('clear-filters');
-        const issueCount = document.getElementById('issue-count'); // For updating the issue count after applying filters
+        const issueCount = document.querySelector('.issue-count'); // For updating the issue count after applying filters
         const issueCards = document.querySelectorAll('.issue-card'); // For filtering through; select all issue cards
 
         // Add data attributes to each issue card for filtering
@@ -87,7 +87,7 @@
             });
 
             // Update the issue count display
-            issueCountDisplay.textContent = visibleCount;
+            issueCount.textContent = visibleCount;
         }
 
         // Attach event listeners
