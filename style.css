@@ -13,8 +13,6 @@ body {
     font-family: 'Ubuntu', sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 900px;
-    margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
 
@@ -25,9 +23,12 @@ body {
 
 /* Center the main content */
 main {
-    max-width: 1200px;      /* Limit width on large screens */
-    margin: 0 auto;         /* Center horizontally */
-    padding: 0 1rem;        /* Add side padding */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Space between cards */
+    max-width: 100%; 
+    margin: 0;      
+    padding: 0 2rem;        /* Add side padding */
 }
 
 /* Center the filters */
@@ -45,7 +46,8 @@ header {
 .issue-card {
     margin-left: auto;      /* Center the card */
     margin-right: auto;
-    max-width: 900px;       /* Limit card width */
+    max-width: 100%;  
+    width: 100%;     
 }
 
 header {
@@ -102,14 +104,9 @@ header p.issue-count {
 
 /* Issue description */
 .issue-description {
-    margin-bottom: 15px;
     font-size: 0.95em;
     color: #555;
     line-height: 1.5;
-}
-
-.issue-description p {
-    margin-bottom: 5px;
 }
 
 /* Issue metadata */ /* Assignee & date created - displayed inline */
