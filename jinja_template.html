@@ -63,15 +63,19 @@
 
                 <!--Display project tag-->
                 <div class="issue-tags">
-                    <span class="project-tag">
-                        {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
-                    </span>
+                    <button class="p-chip--caution">
+                        <span class="p-chip__value">
+                            {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
+                        </span>
+                    </button>
                 </div>
 
                 <!--Show issue meta information (assignee)-->
                 <div class="issue-meta">
                 {% if issue.assignee %}
-                    <span class="assignee"><span class="assignee-emoji"></span> Assignee: {{issue.assignee.login}} </span>    <!--Nested expression to show the assignee's login name (username?)-->
+                    <button class="p-chip--positive">
+                        <span class="p-chip__lead">Assignee: {{issue.assignee.login}}</span>  <!--Nested expression to show the assignee's login name (username?)-->
+                    </button>   
                 {% endif %}
                 </div>               
 
