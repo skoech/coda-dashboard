@@ -102,11 +102,29 @@ header p.issue-count {
     color: #666; /* grey on hover for better visibility */
 }
 
+.issue-tags {
+    margin-bottom: 0;
+}
+
 /* Issue description */
 .issue-description {
     font-size: 0.95em;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.4;
+}
+
+.issue-description h1,
+.issue-description h2,
+.issue-description h3,
+.issue-description h4,
+.issue-description h5,
+.issue-description h6 {
+    display: inline;
+    margin: 0;
+}
+
+.issue-description p {
+    margin: 0.3em 0;
 }
 
 /* Issue metadata */ /* Assignee & date created - displayed inline */
