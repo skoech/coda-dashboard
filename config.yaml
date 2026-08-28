@@ -51,3 +51,12 @@ repositories:
       name: Anna Sancho Vaquer
       github: asanvag
     contributor guide:
+
+  - owner: canonical
+    repo: robotics_documentation
+    labels:
+      - CODA
+    maintainer(s):
+      name: Geoffrey Nyaga
+      github: geoffreynyaga
+    contributor guide:
