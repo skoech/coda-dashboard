@@ -1,6 +1,8 @@
 import json # For reading issues.json
 from datetime import datetime   # Shows date refreshed
 from jinja2 import Template # Import the Template class from the jinja2 module for use in rendering HTML templates with dynamic data (fills the placeholders, and converts template into final HTML).
+import mistune # Markdown parser for converting Markdown text to HTML
+
 
 # Build the dashboard HTML page using the issues loaded from issues.json and the Jinja2 template
 def load_json(json_path):
@@ -39,6 +41,22 @@ def build_dashboard(json_path, template_path, output_path):
     with open(template_path, 'r') as file:
         template = Template(file.read()) # Read the contents of the template file and create a Jinja2 Template object
 
+    # Process each issue
+    for issue in issues:
+        if issue.get('body'):
+
+            # Convert Markdown to HTML
+            html_text = strip_markdown(issue['body'])
+
+            # Truncate to 500 chars
+            if len(html_text) > 500:
+                issue['body_truncated'] = html_text[:500] + '...'
+            else:
+                issue['body_truncated'] = html_text
+        else:
+            issue['body_truncated'] = "No description provided"
+
+
     # Render the template with the issues data
     print ("Generating dashboard HTML...")
     rendered_html = template.render(
@@ -52,6 +70,21 @@ def build_dashboard(json_path, template_path, output_path):
         file.write(rendered_html)
 
     print(f"Dashboard HTML generated and saved. Open {output_path} in a web browser to view the dashboard.")
+
+def strip_markdown(text):
+    """
+    Convert Markdown to HTML for proper rendering
+
+    Args:
+    text (str): The Markdown text to clean
+
+    Returns:
+        str: HTML-rendered text from the Markdown input
+    """
+    if not text: # If there's no description/ text is empty or None
+        return "No description provided"
+
+    return mistune.markdown(text)
 
 if __name__ == "__main__":
     build_dashboard('issues.json', 'jinja_template.html', 'index.html') # Call the build_dashboard function to build the dashboard when the script is run directly

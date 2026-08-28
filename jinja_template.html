@@ -106,11 +106,7 @@
                 <!--Show issue description-->
 
                 <div class="issue-description">
-                {% if issue.body %}
-                <p>{{ issue.body[:500] }} {% if issue.body|length > 500 %}...{% endif %}</p> <!--Jinja expression to show the first 500 characters of the issue body/description and add ellipsis if it's longer. |length is a Jinja2 filter that returns the length of a string. [:500] is a slicing operation that extracts only the first 500 chars-->
-                {% else %}
-                <p>No description provided.</p>
-                {% endif %}
+                    <p>{{ issue.body_truncated | safe }}</p>
 
                 <!--Vanilla CTA block - read more-->
                  <a href="{{ issue.html_url }}" class="p-cta-block">Read more ›</a>                   
