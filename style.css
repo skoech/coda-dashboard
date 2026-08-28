@@ -113,7 +113,12 @@ header p.issue-count {
     line-height: 1.4;
 }
 
-.issue-description h1,
+.issue-description h1 {
+    font-size: 1.5em;
+    margin: 0;
+    display: inline;
+}
+
 .issue-description h2,
 .issue-description h3,
 .issue-description h4,
