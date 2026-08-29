@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="style.css">
     </head>
         <body>
-
             <header id="navigation" class="p-navigation is-dark">
                 <div class="p-navigation__row--25-75">
                     <div class="p-navigation__banner">
@@ -42,17 +41,17 @@
                 </div>
             </header>
 
-            <div id="title" class="row--25-75">
-                    <div class="col">
-                        <h1>{{ title }}</h1> <!--Replace title with a Jinja variable/expression (prints a value)-->
-                            <div class="p-chip">
-                                <span class="p-chip__lead">Total open issues</span>
-                                 <span id="issue-count" class="p-chip__value">{{ issue_count }}</span> <!--Jinja expression to show number of issues passed from the build script-->
+            <div class="row">
+                <div class="col u-align--center">
+                    <h1>{{ title }}</h1> <!--Replace title with a Jinja variable/expression (prints a value)-->
+                        <div class="p-chip">
+                            <span class="p-chip__lead">Total open issues</span>
+                            <span id="issue-count" class="p-chip__value">{{ issue_count }}</span> <!--Jinja expression to show number of issues passed from the build script-->
                             </div>
                     {% if issue_count == 0 %}
                         <p>There are no open issues.</p> <!--Jinja conditional to show a message if there are no issues-->
                     {% endif %}
-                    </div>
+                </div>
             </div>
 
             <!--Add filters-->
