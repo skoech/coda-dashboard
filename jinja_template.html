@@ -45,7 +45,6 @@
 
             <div class="row">
                 <div class="col u-align--center">
-                   <!-- <h1>{{ title }}</h1> Replace title with a Jinja variable/expression (prints a value)-->
                         <div class="p-chip">
                             <span class="p-chip__lead">Total open issues</span>
                             <span id="issue-count" class="p-chip__value">{{ issue_count }}</span> <!--Jinja expression to show number of issues passed from the build script-->
@@ -93,49 +92,51 @@
                 </div>
             </nav>
 
-            <main>
+            <main class="p-grid">
             <!--Loop through every issue and print the number, title, description and meta info, e.g. assignee and date created.-->
-            {% for issue in issues %}
-                <div class="issue-card">
-                    <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
+                {% for issue in issues %}
+                    <div class="p-grid__col--12 p-grid__col--medium-6 p-grid__col--large-4">
+                        <div class="issue-card">
+                            <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
 
-                <!--Display project tag-->
-                <div class="issue-tags">
-                    <button class="p-chip--caution">
-                        <span class="p-chip__value">
-                            {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
-                        </span>
-                    </button>
-                </div>
+                        <!--Display project tag-->
+                        <div class="issue-tags">
+                            <button class="p-chip--caution">
+                                <span class="p-chip__value">
+                                    {{ issue.repository_url.split('/')[-1] }} <!--Jinja expression to show the project name (repository name) by splitting the repository URL and taking the last part-->
+                                </span>
+                            </button>
+                        </div>
 
-                <!--Show issue meta information (assignee)-->
-                <div class="issue-meta">
-                {% if issue.assignee %}
-                    <button class="p-chip--positive">
-                        <span class="p-chip__lead">Assignee: {{issue.assignee.login}}</span>  <!--Nested expression to show the assignee's login name (username?)-->
-                    </button>   
-                {% endif %}
-                </div>               
+                        <!--Show issue meta information (assignee)-->
+                        <div class="issue-meta">
+                        {% if issue.assignee %}
+                            <button class="p-chip--positive">
+                                <span class="p-chip__lead">Assignee: {{issue.assignee.login}}</span>  <!--Nested expression to show the assignee's login name (username?)-->
+                            </button>   
+                        {% endif %}
+                        </div>               
 
-                <!--Show issue description-->
+                        <!--Show issue description-->
 
-                <div class="issue-description">
-                    <p>{{ issue.body_truncated | safe }}</p>
+                        <div class="issue-description">
+                            <p>{{ issue.body_truncated | safe }}</p>
 
-                <!--Vanilla CTA block - read more-->
-                 <a href="{{ issue.html_url }}" class="p-cta-block">Read more ›</a>                   
-                </div>
+                        <!--Vanilla CTA block - read more-->
+                        <a href="{{ issue.html_url }}" class="p-cta-block">Read more ›</a>                   
+                        </div>
 
-                <!--Display label tags-->
-                <div>
-                    {% for label in issue.labels %}
-                    <button class="p-chip">
-                        <span class="p-chip__value">{{ label.name }}</span>
-                </button>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endfor %}
+                        <!--Display label tags-->
+                        <div>
+                            {% for label in issue.labels %}
+                            <button class="p-chip">
+                                <span class="p-chip__value">{{ label.name }}</span>
+                        </button>
+                            {% endfor %}
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </main>
             <script src="filters.js"></script>
         </body>

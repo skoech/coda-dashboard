@@ -17,9 +17,6 @@ body {
 
 /* Center the main content */
 main {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 20px;
     max-width: 100%;
     margin: 0;
     padding: 0 2rem;
@@ -120,4 +117,9 @@ main {
 
 .row {
     padding-top: 2rem !important;
+}
+
+.p-grid {
+    gap: 20px;
+    padding: 0 2rem;
 }
