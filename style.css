@@ -153,6 +153,12 @@ main {
     .issues-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Align clear button with dropdowns */
+    .p-form--inline .p-form__group:last-child .p-button-neutral {
+         margin-top: 0.5rem;
+         margin-bottom: 0;
+    }
 }
 
 /* Mobile - 1 column */
@@ -161,6 +167,17 @@ main {
         grid-template-columns: repeat(1, 1fr) !important;
         padding: 0 1rem;
     }
+
+    /* Make filters stack vertically on mobile */
+    .p-form--inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    p.p-form--inline .p-form__group:last-child {
+        margin-bottom: 0;
+    }
+    
 }
 
 
