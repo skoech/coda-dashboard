@@ -92,10 +92,9 @@
                 </div>
             </nav>
 
-            <main class="p-grid">
+            <main class="issues-grid">
             <!--Loop through every issue and print the number, title, description and meta info, e.g. assignee and date created.-->
                 {% for issue in issues %}
-                    <div class="p-grid__col--12 p-grid__col--medium-6 p-grid__col--large-4">
                         <div class="issue-card">
                             <h2><a href="{{ issue.html_url }}">#{{ issue.number}} {{ issue.title }}</a></h2> <!--Jinja expression to show the issue number and title as a link to the issue URL (browser URL, not API url, i.e. issue.url)-->
 
