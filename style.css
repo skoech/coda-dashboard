@@ -171,13 +171,22 @@ main {
     /* Make filters stack vertically on mobile */
     .p-form--inline {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
+    }
+         .p-form--inline .p-form__group {
+        max-width: 300px; /* Limit the width of form groups */
+        width: 100%; /* Make form groups take full width up to the max-width */
     }
 
-    p.p-form--inline .p-form__group:last-child {
-        margin-bottom: 0;
+    /* Make select elements fill container but not too wide */
+    .p-form__control {
+        width: 100% !important;
+        max-width: 300px; /* Match parent */
     }
-    
+
+        /* Center clear button */
+    .p-form--inline .p-form__group:last-child {
+        display: flex;
+        justify-content: center;
+    }
 }
-
-
