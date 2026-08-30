@@ -38,8 +38,6 @@ main {
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
-    margin-left: 1rem;
-    margin-right: 1rem;
     max-width: 100%;
     width: 100%;
 }
@@ -167,12 +165,16 @@ main {
 @media (max-width: 639px) {
     .issues-grid {
         grid-template-columns: repeat(1, 1fr) !important;
-        padding-right: 1rem;
+        padding: 0 1rem;
     }
 
     .p-navigation__row--25-75 {
         padding-left: 0 !important;
         padding-right: 0 !important;
+    }
+
+    .p-navigation__banner {
+        padding-left: 1rem;
     }
 
     .p-navigation__nav {
@@ -202,7 +204,6 @@ main {
     }
     .issue-card {
         padding: 15px;
-        margin-left: 0;
-        margin-right: 1rem;
+        margin-bottom: 15px;
     }
 }
