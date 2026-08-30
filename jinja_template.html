@@ -14,18 +14,20 @@
         <body>
             <header id="navigation" class="p-navigation is-dark">
                 <div class="p-navigation__row--25-75">
+                    <!-- Banner (25%) -->
                     <div class="p-navigation__banner">
                         <div class="p-navigation__tagged-logo">
                             <a class="p-navigation__link" href="https://documentation.academy/">
                                 <div class="p-navigation__logo-tag">
                                     <img class="p-navigation__logo-icon" src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="">
                                 </div>
-                                <span class="p-navigation__logo-title">Canonical</span>
+                                <span class="p-navigation__logo-title">CODA dashboard</span>
                             </a>
                         </div>
-                        </div>
-                </div>
-                    <nav class="p-navigation__nav" aria-label="Example main">
+                    </div>
+                    
+                    <!-- Nav (75%) - inside the row -->
+                    <nav class="p-navigation__nav" aria-label="Main navigation">
                         <ul class="p-navigation__items">
                             <li class="p-navigation__item">
                                 <a class="p-navigation__link" href="#">GitHub</a>
@@ -43,7 +45,7 @@
 
             <div class="row">
                 <div class="col u-align--center">
-                    <h1>{{ title }}</h1> <!--Replace title with a Jinja variable/expression (prints a value)-->
+                   <!-- <h1>{{ title }}</h1> Replace title with a Jinja variable/expression (prints a value)-->
                         <div class="p-chip">
                             <span class="p-chip__lead">Total open issues</span>
                             <span id="issue-count" class="p-chip__value">{{ issue_count }}</span> <!--Jinja expression to show number of issues passed from the build script-->
@@ -89,38 +91,7 @@
                     <label for="clear-filters">&nbsp;</label>
                     <button id="clear-filters" class="p-button-neutral">Clear filters</button>
                 </div>
-                
             </nav>
-
-       <!--- <header id="navigation" class="p-navigation is-dark">
-        <div class="p-navigation__row--25-75">
-            <div class="p-navigation__banner">
-            <div class="p-navigation__tagged-logo">
-                <a class="p-navigation__link" href="#">
-                <div class="p-navigation__logo-tag">
-                    <img class="p-navigation__logo-icon" src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg" alt="">
-                </div>
-                <span class="p-navigation__logo-title">Canonical</span>
-                </a>
-            </div>
-            </div>
-        </div>
-        </header>
-
-        <div class="row--25-75">
-        </div class="col">
-            <h1>{{ title }}</h1> --><!--Replace title with a Jinja variable/expression (prints a value)-->
-           <!-- <div class="p-chip">
-                <span class="p-chip__lead">Total open issues</span>
-                <span id="issue-count" class="p-chip__value">{{ issue_count }}</span> --><!--Jinja expression to show number of issues passed from the build script-->
-          <!--  </div>
-            {% if issue_count == 0 %}
-                <p>There are no open issues.</p>--><!--Jinja conditional to show a message if there are no issues-->
-           <!-- {% endif %}
-        </div>
-        </div> -->
-
-            
 
             <main>
             <!--Loop through every issue and print the number, title, description and meta info, e.g. assignee and date created.-->

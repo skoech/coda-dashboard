@@ -1,88 +1,54 @@
 /* Stylesheet for the CODA dashboard */
 
-/* Global resets */ /* Removes all browser default spacing to allow control over spacing */
+/* Global resets */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Makes padding count as part of width, which makes it easier to size things */
-
+    box-sizing: border-box;
 }
 
-/* Base styles */ /* Defines default styles for common elements */
+/* Base styles */
 body {
     font-family: 'Ubuntu', sans-serif;
     color: #333;
     padding: 0;
     background-color: #f5f5f5;
-    align-items: center;
 }
 
 /* Center the main content */
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Responsive grid layout */
-    gap: 20px; /* Space between cards */
-    max-width: 100%; 
-    margin: 0;      
-    padding: 0 2rem;        /* Add side padding */
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 20px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 2rem;
 }
 
 /* Center the filters */
 .p-form--inline {
     display: flex;
     flex-direction: row;
-    justify-content: center;  /* Center form elements */
+    justify-content: center;
     align-items: center;
 }
 
-/* Center the header */
-header {
-    text-align: center;
-}
-
-/* Center issue cards */
-.issue-card {
-    margin-left: auto;      /* Center the card */
-    margin-right: auto;
-    max-width: 100%;  
-    width: 100%;     
-}
-
-header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 30px 0;
-    border-bottom: 3px solid #e95420;
-}
-
-header h1 {
-    font-size: 2.5em;
-    color: #111;
-    margin-bottom: 5px;
-} 
-
-header p {
-    color: #666;
-    font-size: 1.2em;
-}
-
-header p.issue-count {
-    color: #e95420;
-    font-weight: bold;
-}
-
-/* Issue cards */ /* Styles for the issue cards displayed, with shadow and hover effects*/
+/* Issue cards */
 .issue-card {
     background: #fff;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow*/
-    transition: box-shadow 0.3s ease-in-out; /* Smooth shadow transition on hover*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 100%;
 }
 
 .issue-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for depth effect (card lift)*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .issue-card h2 {
@@ -92,12 +58,12 @@ header p.issue-count {
 
 .issue-card h2 a {
     color: #333;
-    text-decoration: none; /* Removes underline from links */
+    text-decoration: none;
 }
 
 .issue-card h2 a:hover {
     text-decoration: underline;
-    color: #666; /* grey on hover for better visibility */
+    color: #666;
 }
 
 .issue-tags {
@@ -130,25 +96,28 @@ header p.issue-count {
     margin: 0.3em 0;
 }
 
-/* Issue metadata */ /* Assignee & date created - displayed inline */
+/* Issue metadata */
 .issue-meta {
-    display: flex; /* Flexbox layout - items side by side */
-    flex-wrap: wrap; /* Wrap/break to the next line, if needed - allows wrapping on smaller screens */
-    gap: 15px; /* Space between items */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-bottom: 15px;
     font-size: 0.9em;
     color: #666;
 }
 
 .issue-meta span {
-    display: inline-flex; /* Inline but with flex capabilities */
-    align-items: center; /* Vertically center icon and text */
-    gap: 4px; /* Space between icon and text */
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.p-navigation__row {
-    max-width: 100%;
-    width: 100%;
+/* Navigation */
+.p-navigation__row--25-75 {
+    max-width: 100% !important;
+    width: 100% !important;
 }
 
-
+.row {
+    padding-top: 2rem !important;
+}
