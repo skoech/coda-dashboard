@@ -1,5 +1,5 @@
 # CODA Dashboard
-[![GitHub Actions](https://github.com/skoech/coda-dashboard/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/skoech/coda-dashboard/actions)
+[![GitHub Actions](https://github.com/skoech/coda-dashboard/workflows/Build%20and%20Deploy%20CODA%20Dashboard/badge.svg)](https://github.com/skoech/coda-dashboard/actions)
 
 The CODA dashboard is a static dashboard that tracks [Canonical's Open Documentation Academy (CODA)](https://documentation.academy/) issues across multiple public GitHub repositories.
 
@@ -7,22 +7,22 @@ The dashboard replaces the [GitHub issues list](https://github.com/canonical/ope
 
 ## How it works
 
-**Configuration**: Repositories are defined in `config.yaml`, with specific per-repo labels to filter issues
-**Fetching issues**: `fetch_issues.py` pulls issues with GitHub API using configured labels
-**Building the frontend**: `build_frontend.py` generates static HTML using Jinja2 templates
-**Deploying the dashboard**: GitHub Actions automatically builds and deploys the dashboard to GitHub Pages
+- **Configuration**: Repositories are defined in `config.yaml`, with specific per-repo labels to filter issues
+- **Fetching issues**: `fetch_issues.py` pulls issues with GitHub API using configured labels
+- **Building the frontend**: `build_frontend.py` generates static HTML using Jinja2 templates
+- **Deploying the dashboard**: GitHub Actions automatically builds and deploys the dashboard to GitHub Pages
 
 ## Usage
 
-The dashboard helps contributors view open issues from all [projects particpating in CODA](https://documentation.academy/projects/), and browse through them using filters and tags. It enables maintainers to add their project(s) and then configure label or set of labels they want to use.
+The dashboard helps contributors view open issues from all [projects particpating in CODA](https://documentation.academy/projects/), and browse through them using filters and tags. It enables maintainers to add their project(s) and then configure a label or set of labels they want to use.
 
 ### For contributors
 
 - All the open issues from all participating projects will be displayed on the dashboard. Check the counter on the header section to know the number of issues.
-- Use dropowns to filter through the issues by project, label and whether an issue is assigned or not. 
-- An issue card contains a project tag, a preview of the issue, and label tags for all labels associated with the issue. ![alt text](image.png)
+- Use dropowns to filter through the issues by project, label and whether an issue is assigned or not. The counter will show number of filtered issues.
+- An issue card contains a project tag, a preview of the issue, and label tags for all labels associated with the issue. ![Example of an issue card showing project tag, description preview, and label tags](assets/issue-card.png)
   - These details are meant to give you context about the issue.
-- Click on the *Read more* button to see the full issue on GitHub. You can also go to GitHub issue by clicking on the issue title.
+- Click on the *Read more* button to see the full issue on GitHub. You can also go to the GitHub issue by clicking on the issue title.
 
 ### For maintainers
 
@@ -41,6 +41,7 @@ repositories:
 ```
 
 > [!IMPORTANT]
+
 > The standard `coda` label is highly recommended for ease and uniformity, but if this is not possible for your project, please add a custom label or set of labels, which should be comma-separated.
 
 > GitHub API uses AND logic for multiple labels. If you use a set of labels, only issues with **all** the labels specified will be fetched.
@@ -68,7 +69,7 @@ To make a contribution, build the dashboard locally, make your changes, test the
 
 ### How to build the dashboard locally
 
-The dashboard is automatically deployed to GitHub Pages. To run locally:
+The dashboard is automatically deployed to GitHub Pages. To run it locally:
 
 1. Fork the repository
 
@@ -92,7 +93,7 @@ The dashboard is automatically deployed to GitHub Pages. To run locally:
    pip install -r requirements.txt
    ```
 
-5. To test if the issues are being fetched properly:
+5. Test if the issues are being fetched properly:
 
    ```bash
    python3 fetch_issues.py
@@ -104,10 +105,10 @@ The dashboard is automatically deployed to GitHub Pages. To run locally:
    python3 build_frontend.py
    ```
 
-7. Open `index.html` in your browser to serve the dashboard
+7. Open `index.html` in your browser to serve the dashboard.
 
 ## License
 
-CODA Dashboard is free and open source software distributed under the Apache-2.0 license.
+CODA Dashboard is free and open source, and distributed under the Apache-2.0 license.
 
 © 2026 Canonical Ltd.
