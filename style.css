@@ -174,11 +174,34 @@ main {
     }
 
     .p-navigation__banner {
-        padding-left: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
     }
 
     .p-navigation__nav {
-        padding-right: 1rem;
+        display: none;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .p-navigation__nav.is-open {
+        display: block;
+    }
+
+    .p-navigation__items {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .p-navigation__item {
+        width: 100%;
+    }
+
+    .p-navigation__link {
+        display: block;
+        padding: 0.5rem 0;
     }
 
     /* Make filters stack vertically on mobile */
@@ -186,7 +209,8 @@ main {
         flex-direction: column;
         align-items: center;
     }
-         .p-form--inline .p-form__group {
+
+    .p-form--inline .p-form__group {
         max-width: 300px; /* Limit the width of form groups */
         width: 100%; /* Make form groups take full width up to the max-width */
     }
@@ -202,6 +226,7 @@ main {
         display: flex;
         justify-content: center;
     }
+
     .issue-card {
         padding: 15px;
         margin-bottom: 15px;

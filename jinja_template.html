@@ -13,7 +13,7 @@
     </head>
         <body>
             <header id="navigation" class="p-navigation is-dark">
-                <div class="p-navigation__row--25-75">
+               <!-- <div class="p-navigation__row--25-75">-->
                     <!-- Banner (25%) -->
                     <div class="p-navigation__banner">
                         <div class="p-navigation__tagged-logo">
@@ -24,6 +24,11 @@
                                 <span class="p-navigation__logo-title">CODA dashboard</span>
                             </a>
                         </div>
+
+                        <!-- Mobile menu toggle -->
+                        <button class="p-navigation__toggle--open" onclick="this.classList.toggle('is-open'); document.querySelector('.p-navigation__nav').classList.toggle('is-open')">
+                            ☰
+                        </button>
                     </div>
                     
                     <!-- Nav (75%) - inside the row -->
