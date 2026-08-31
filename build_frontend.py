@@ -84,6 +84,10 @@ def strip_markdown(text):
     if not text: # If there's no description/ text is empty or None
         return "No description provided"
 
+    # Pre-process inline code that's breaking Mistune
+    import re
+    text = re.sub(r'`([^`]+)`', r'\1', text)  # Escape inline code for Mistune
+
     return mistune.markdown(text)
 
 if __name__ == "__main__":
