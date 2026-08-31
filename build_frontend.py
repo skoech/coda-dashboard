@@ -41,6 +41,10 @@ def build_dashboard(json_path, template_path, output_path):
     with open(template_path, 'r') as file:
         template = Template(file.read()) # Read the contents of the template file and create a Jinja2 Template object
 
+    # Initialize sets to keep track of unique repositories and labels
+    repos = set()
+    labels = set()
+
     # Process each issue
     for issue in issues:
         if issue.get('body'):
@@ -56,6 +60,13 @@ def build_dashboard(json_path, template_path, output_path):
         else:
             issue['body_truncated'] = "No description provided"
 
+        # Get repo name from URL
+        repo_name = issue['repository_url'].split('/')[-1] # Extract the repository name from the URL
+        repos.add(repo_name) # Add the repository name to the set of repositories
+        
+        # Get labels
+        for label in issue.get('labels', []):
+            labels.add(label['name'])
 
     # Render the template with the issues data
     print ("Generating dashboard HTML...")
@@ -63,6 +74,8 @@ def build_dashboard(json_path, template_path, output_path):
         title="CODA dashboard",
         issues=issues,
         issue_count=len(issues),
+        repos=sorted(repos),
+        labels=sorted(labels),
     )
 
     # Save the rendered HTML

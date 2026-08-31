@@ -15,7 +15,7 @@
         // Add data attributes to each issue card for filtering
         issueCards.forEach(function(card) {
             // Get project tag
-            const projectTag = card.querySelector('.p-chip--caution .p-chip__value');
+            const projectTag = card.querySelector('.p-chip--caution');
               if (projectTag) {
                 card.dataset.project = projectTag.textContent.trim(); // Create a data-project attribute on the card HTML element
               }
@@ -26,7 +26,7 @@
               });
 
             // Get label tags
-            const labelTags = card.querySelectorAll('.p-chip .p-chip__value');
+            const labelTags = card.querySelectorAll('.p-chip');
             const labels = [];
             labelTags.forEach(function(tag) { // Loop through each label tag
                 labels.push(tag.textContent.trim()); // Store label text in the array
