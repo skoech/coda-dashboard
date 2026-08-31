@@ -37,20 +37,11 @@ repositories:
   - owner: canonical
     repo: chisel-docs
     labels:
-      - edit
+      - coda
     maintainer(s):
       name: Anna Sancho Vaquer
       github: asanvag
     contributor guide: 
-
-  - owner: canonical
-    repo: rockcraft
-    labels:
-      - edit
-    maintainer(s):
-      name: Anna Sancho Vaquer
-      github: asanvag
-    contributor guide:
 
   - owner: canonical
     repo: robotics_documentation
